@@ -103,9 +103,9 @@ In the Markdown for your tutorial, you may include special directives that are s
 
 
 ### Trigger file actions in the text editor
-To include a link to `walkthrough editor-open-file "tutorial.md" "open a file for editing"`, use:
+To include a link to `walkthrough editor-open-file "cloud-shell-tutorials/tutorial.md" "open a file for editing"`, use:
 
-    `walkthrough editor-open-file "tutorial.md" "open a file for editing"`
+    `walkthrough editor-open-file "cloud-shell-tutorials/tutorial.md" "open a file for editing"`
 
 
 ### Highlight a UI element

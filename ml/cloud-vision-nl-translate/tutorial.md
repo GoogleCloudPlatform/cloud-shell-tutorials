@@ -77,7 +77,7 @@ Next, you'll send a request to the Cloud Vision API.
 First, change to this directory in the cloud shell:
 
 ```bash
-cd ~/code-snippets/ml/cloud_shell_tutorials/cloud-vision-nl-translate
+cd ~/cloud-shell-tutorials/ml/cloud-vision-nl-translate
 ```
 
 You'll remain in this directory for the rest of the tutorial.
@@ -93,7 +93,7 @@ You'll use that URL to form a JSON request to analyze the photo. In particular, 
 the  [`TEXT_DETECTION`](https://cloud.google.com/vision/docs/ocr) feature of the Vision API. This will run optical character recognition (OCR) on the image to extract text.
 
 Bring up the `ocr-request.json` file
-`walkthrough editor-open-file "code-snippets/ml/cloud_shell_tutorials/cloud-vision-nl-translate/ocr-request.json" "in the text editor"`.
+`walkthrough editor-open-file "cloud-shell-tutorials/ml/cloud-vision-nl-translate/ocr-request.json" "in the text editor"`.
 
 It contains the following request:
 
@@ -224,7 +224,7 @@ Next, we'll send the extracted text to the Translation API.
 The [Translation API](https://cloud.google.com/translate/docs/reference/translate) can translate text into 100+ languages. It can also detect the language of the input text. To translate the French text into English, all you need to do is pass the text and the language code for the target language (en-US) to the Translation API.
 
 Bring up the `translation-request.json` file
-`walkthrough editor-open-file "code-snippets/ml/cloud_shell_tutorials/cloud-vision-nl-translate/translation-request.json" "in the text editor"`.
+`walkthrough editor-open-file "cloud-shell-tutorials/ml/cloud-vision-nl-translate/translation-request.json" "in the text editor"`.
 
 It should look like this:
 
@@ -283,7 +283,7 @@ Onward to the next step, where we'll analyze the translated text using the Natur
 The Natural Language API helps us understand text by extracting entities, analyzing sentiment and syntax, and classifying text into categories. You can use the `analyzeEntities` method to see what entities the Natural Language API can find in the text from your image. 
 
 Bring up the `nl-request.json` file
-`walkthrough editor-open-file "code-snippets/ml/cloud_shell_tutorials/cloud-vision-nl-translate/nl-request.json" "in the text editor"`.
+`walkthrough editor-open-file "cloud-shell-tutorials/ml/cloud-vision-nl-translate/nl-request.json" "in the text editor"`.
 
 It should look like this:
 

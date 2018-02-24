@@ -76,13 +76,13 @@ Next, you'll use the Speech API to make a transcription request.
 First, change to this directory in the cloud shell:
 
 ```bash
-cd ~/code-snippets/ml/cloud_shell_tutorials/cloud-speech-intro
+cd ~/cloud-shell-tutorials/ml/cloud-speech-intro
 ```
 
 You'll remain in this directory for the rest of the tutorial.
 
 Bring up the `request.json` file
-`walkthrough editor-open-file "code-snippets/ml/cloud_shell_tutorials/cloud-speech-intro/request.json" "in the text editor"`.
+`walkthrough editor-open-file "cloud-shell-tutorials/ml/cloud-speech-intro/request.json" "in the text editor"`.
 
 It should look like this:
 

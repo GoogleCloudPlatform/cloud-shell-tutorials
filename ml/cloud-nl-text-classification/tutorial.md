@@ -75,7 +75,7 @@ Next, you'll use the Natural Language API's `classifyText` method to classify a 
 First, change to this directory in the cloud shell:
 
 ```bash
-cd ~/code-snippets/ml/cloud_shell_tutorials/cloud-nl-text-classification
+cd ~/cloud-shell-tutorials/ml/cloud-nl-text-classification
 ```
 
 You'll remain in this directory for the rest of the tutorial.
@@ -87,7 +87,7 @@ We'll start by classifying a single article, and then we'll see how we can use t
 > *A Smoky Lobster Salad With a Tapa Twist. This spin on the Spanish pulpo a la gallega skips the octopus, but keeps the sea salt, olive oil, pimentón and boiled potatoes.*
 
 Bring up the `request.json` file
-`walkthrough editor-open-file "code-snippets/ml/cloud_shell_tutorials/cloud-nl-text-classification/request.json" "in the text editor"`.
+`walkthrough editor-open-file "cloud-shell-tutorials/ml/cloud-nl-text-classification/request.json" "in the text editor"`.
 
 It should look like this:
 
@@ -194,7 +194,7 @@ export GOOGLE_APPLICATION_CREDENTIALS=key.json
 Now we're ready to send the text data to the NL API. To do that we'll use a Python script using the Python module for Google Cloud (note that you could accomplish the same thing from many other languages; there are many different cloud  [client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries)).
 
 Bring up the `classify-text.py` file
-`walkthrough editor-open-file "code-snippets/ml/cloud_shell_tutorials/cloud-nl-text-classification/classify-text.py" "in the text editor"`, and in the code, **replace `YOUR_PROJECT`** with the name of your project.
+`walkthrough editor-open-file "cloud-shell-tutorials/ml/cloud-nl-text-classification/classify-text.py" "in the text editor"`, and in the code, **replace `YOUR_PROJECT`** with the name of your project.
 
 The file looks like this:
 

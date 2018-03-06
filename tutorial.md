@@ -1,169 +1,137 @@
-# Introduction to Writing Tutorials in Cloud Shell
-
+# Introduction to formatting and filtering with gcloud
 
 ## Let's get started!
 
-Get your users up and running quickly with your project by including an interactive tutorial.
+This guide will show you how to use filter and format flags in a variety of ways with your `gcloud` commands in order to produce meaningful results.
 
-This guide will show you how to build your own interactive tutorial (like this one). It'll also walk you through generating a button that users can use to launch your finished tutorial.
+**Time to complete**: About 7 minutes
 
-**Time to complete**: About 10 minutes
+**Prerequisites**: 2 or more projects to test filtering and formatting with.
+
+To view available projects, run:
+```bash
+gcloud projects list
+```
+
+To create a project, run:
+```bash
+gcloud projects create <ENTER-PROJECT-ID> 
+```
+
+**Tip**: Use `--help` with any gcloud command to bring up its documentation.
 
 Click the **Continue** button to move to the next step.
 
+## What can the format flag do?
 
-## What is Cloud Shell?
+The format flag (along with projections - more on that coming up) can be used to format the default output (pretty-printed messages to `stdout`).
 
-Before we jump in, let's briefly go over what Cloud Shell can do.
+Among the variety of formats available, output can be printed in `json`, `csv`, `text`, `value`, `table`, and `yaml` format. 
 
-Cloud Shell is a personal hosted Virtual Machine which comes pre-loaded with developer tools for Google Cloud products. This interactive shell environment comes with a built-in code editor, persistent disk storage, and web preview functionality. To use command-line access alone, visit [console.cloud.google.com/cloudshell](https://console.cloud.google.com/cloudshell).
+**Tip**: When scripting with `gcloud`, don’t depend on the raw output of `gcloud` commands; they may change with a future release! Use the `--format` flag to mitigate the effects of these changes and script against a more predictable structure (like a json-formatted result). 
 
-You can direct your users to Cloud Shell to help them quickly get started with your project; giving them an opportunity to step through a use case and familiarize themselves with your project's functionality.
-
-Continue on to the next step to start setting up your tutorial.
-
-
-## In-context tutorials
-
-What you're looking at now is an in-context tutorial.
-
-The content is shown along with the Cloud Shell environment where you can carry out the tutorial steps. Having the tutorial and development environment open in the same place makes it easier for your users to start using your project through a straightforward single screen experience.
-
-Try running a command now:
+For starters, run this `gcloud` command with a trusty format flag:
 ```bash
-echo "Hello Cloud Shell"
+gcloud projects list --format=json --limit=1
+```
+To display a flattened version of this nested data structure instead, run:
+```bash
+gcloud projects list --format=flattened --limit=1
+```
+Continue on to the next step to discover more involved uses of the `--format` flag.
+
+## Format but fancier 
+
+There’s a lot you can accomplish with just the format flag.
+
+To display the list of your projects as a formatted box with a title and columns for name and state, run:
+```bash
+gcloud projects list --format="table[box,title=Projects](name, lifecycleState)"
 ```
 
-**Tip**: Click the copy button on the side of the code box and paste the command in the Cloud Shell terminal to run it.
-
-Next, you’ll write and launch a basic tutorial.
-
-
-## Opening the editor
-
-You can edit a file stored in Cloud Shell using Cloud Shell’s built-in text editor.
-
-*  To start, open the editor by clicking on the `walkthrough orion-editor-icon` icon.
-*  Look at the source file for this tutorial by opening `tutorial.md`.
-*  Try making a change to the file for this tutorial, then saving it using the `walkthrough editor-spotlight "fileMenu" "file menu"`.
-
-To restart the tutorial with your changes, run:
+To print a csv instead, with no heading and a specific separator, run:
 ```bash
-cloudshell launch-tutorial -d tutorial.md
+gcloud projects list --format="csv[no-heading,separator=' '](name, lifecycleState)"
 ```
 
-Next, you will learn how to format the text in a tutorial.
+Continue on to learn about projections.
 
 
-## Writing in Markdown
+## Project, then format
 
-To write your tutorial, use [Markdown](https://en.wikipedia.org/wiki/Markdown) and follow these guidelines:
+Before we move forward, we need to define the previously alluded term of  **projections**. 
 
+A projection is a list of keys that selects a resource’s data values. You can read about all available projections using `gcloud topic projections`. 
 
-### Edit the title
+It’s often used along with the format flag when the data of the desired format (like `csv` and `table`) cannot be nested (though it can be used with nestable data). It is also used to transform or apply logic directly to the data returned.
 
-Modify the title of this tutorial ('# Introduction to writing tutorials in Cloud Shell') by changing it to:
-
-    # Teach me to write a tutorial
-
-
-### Add a new step
-
-Next, add a step just after the title like this:
-
-    ## Step 1
-    This is a new step I’ve just added.
-Each 'step' of a tutorial is displayed on one page. To move through steps, users use the 'Back' and 'Continue/Forward' buttons.
-
-
-### Add underlying items to a step
-
-To list items that are part of a tutorial step under a particular step heading, add them as such:
-
-    ### This is an item under your first step
-
-The tutorial engine also supports Markdown features like links and images. Note, **including HTML is not supported**.
-
-To recap, a **title** is marked with a **level 1** heading, a **step** with a **level 2** heading, and an **item** with a **level 3** heading.
-
-
-### Restart to see changes
-
-To see your changes, restart the tutorial by running:
+This is a format flag being used on a projection:
 ```bash
-cloudshell launch-tutorial -d tutorial.md
+gcloud projects list --format="csv(name,createTime)"
 ```
 
-Next up, adding helpful links and icons to your tutorial.
+**Tip**: Run gcloud projects list --format=text --limit=1 to display a more complete set of the output’s fields.
 
+## Project with style
 
-## Special tutorial features
+Taking this a step further, you can control how these fields are displayed using field attributes; these are properties like the label value of a column’s output, alignment of column content, and the sort order of rows.
 
-In the Markdown for your tutorial, you may include special directives that are specific to the tutorial engine. These allow you to include helpful shortcuts to actions that you may ask a user to perform.
+**Tip**: Fields and field attributes can be defined using this structure: --format=type[attribute,...]
+(field.transform():attribute,...). 
 
+In practice, this would look like: 
+```bash
+gcloud compute instances list --format="json(zone.basename():sort=1:label=zone,name)"
+```
 
-### Trigger file actions in the text editor
-To include a link to `walkthrough editor-open-file "cloud-shell-tutorials/tutorial.md" "open a file for editing"`, use:
+To return the last URL path component, use basename():
+```bash
+gcloud compute zones list --format="table[box,title=Zones](id:label=zone_id, selfLink.basename())"
+```
 
-    `walkthrough editor-open-file "cloud-shell-tutorials/tutorial.md" "open a file for editing"`
+To align column content to the center, sort primarily by name (and secondarily by zone) and give the zone column an appropriate label, run:
+```bash
+gcloud compute zones list --format="table[box,title=Zones](name:sort=1:align=center, region.basename():label=region:sort=2, status)"
+```
 
+To display a boxed list of all your projects, ordered in reverse alphabetical order along with creation times in a d-m-y format:
 
-### Highlight a UI element
+```bash
+gcloud projects list --format="table[box](name:sort=1:reverse, createTime.date('%d-%m-%Y'))"
+```
 
-You can also direct the user’s attention to an element on the screen that you want them to interact with.
+## Filter out the cruft
 
-You may want to show people where to find the web preview icon to view the web server running in their Cloud Shell virtual machine in a new browser tab.
+In addition to defining the relevant format of output, you can also restrict the result based on conditionals.
 
-Display the web preview icon `walkthrough web-preview-icon` by including this in your tutorial’s Markdown:
+To filter out the available compute zones to display a list of those with asia-prefixed zones, run:
 
-    `walkthrough web-preview-icon`
+```bash
+gcloud compute zones list --filter="region:asia*"
+```
 
-To create a link that shines a `walkthrough spotlight-pointer devshell-web-preview-button "spotlight on the web preview icon"`, add the following:
+To list projects with a parent type that is not an organization, run:
 
-    `walkthrough spotlight-pointer devshell-web-preview-button "spotlight on the web preview icon"`
+```bash
+gcloud projects list --format=json --filter="NOT parent.type:organization"
+```
 
-You can find a list of supported spotlight targets in the [documentation for Cloud Shell Tutorials](https://cloud.google.com/shell/docs/tutorials).
+To list projects created after a specific date (while making the comparison with a nifty projection), run:
 
-You've now built a tutorial to help onboard users!
+```bash
+gcloud projects list --format=json --filter="createTime.date('%d-%m-%Y')>1-1-2017"
+```
 
-Next, you’ll create a button that allows users to launch your tutorial in Cloud Shell.
+For a more extensive list of available filter operations, run `gcloud topic filters --help`.
 
-
-## Creating a button for your site
-
-Here is how you can create a button for your website, blog, or open source project that will allow users to launch the tutorial you just created.
-
-
-### Creating an HTML Button
-
-To build a link for the 'Open in Cloud Shell' feature, start with this base HTML and replace the following:
-
-**`YOUR_REPO_URL_HERE`** with the project repository URL that you'd like cloned for your users in their launched Cloud Shell environment.
-
-**`TUTORIAL_FILE.md`** with your tutorial’s Markdown file. The path to the file is relative to the root directory of your project repository.
-
-    <a  href="https://console.cloud.google.com/cloudshell/open?git_repo=YOUR_REPO_URL_HERE&tutorial=TUTORIAL_FILE.md">
-      <img alt="Open in Cloud Shell" src="http://gstatic.com/cloudssh/images/open-btn.png">
-    </a>
-
-Once you've edited the above HTML with the appropriate values for `git_repo` and `tutorial`, use the HTML snippet to generate the 'Open in Cloud Shell' button for your project.
-
-
-### Creating a Markdown Button
-
-If you are posting the 'Open in Cloud Shell' button in a location that accepts Markdown instead of HTML, use this example instead:
-
-    [![Open this project in Cloud Shell](http://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/open?git_repo=YOUR_REPO_URL_HERE&page=editor&tutorial=TUTORIAL_FILE.md)
-
-Likewise, once you've replaced `YOUR_REPO_URL_HERE` and `TUTORIAL_FILE.md` in the 'Open in Cloud Shell' URL as described above, the resulting Markdown snippet can be used to create your button.
-
+You’re all done! 
 
 ## Congratulations
 
 `walkthrough conclusion-trophy`
 
-You’re all set!
+You’re all set! 
 
-You can now have users launch your tutorial in Cloud Shell and have them start using your project with ease.
+You can now filter and format to your heart’s content. Read the help of `gcloud topic filters` and `gcloud topic formats` for a detailed look at what these flags can do.
 
-
+**Don’t forget to clean up after yourself**: If you created test projects, be sure to delete them to avoid unnecessary charges. Use `gcloud projects delete <PROJECT-ID>`.

@@ -8,4 +8,4 @@ This repository contains a tutorial to help you make the most of gcloud command 
 Launch the tutorial with Cloud Shell:
 
 [![Open this tutorial in Cloud
-Shell](http://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/GoogleCloudPlatform/cloud-shell-tutorials/sdk/filter-format-tutorial.git&page=editor&tutorial=tutorial.md)
+Shell](http://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/GoogleCloudPlatform/cloud-shell-tutorials/cloudsdk/filter-format-tutorial.git&page=editor&tutorial=tutorial.md)

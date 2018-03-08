@@ -5,7 +5,7 @@ development environment managing resources hosted on Google Cloud Platform.
 
 This repository contains tutorials to help you make the most of Cloud Shell.
 
-You and find the online documentation
+You can find the online documentation
 [here](https://cloud.google.com/shell/docs/tutorials).
 Click the open in Cloud Shell button below to run a sample tutorial yourself.
 

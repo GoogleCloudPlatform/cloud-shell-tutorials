@@ -43,9 +43,9 @@ Next, you’ll write and launch a basic tutorial.
 
 You can edit a file stored in Cloud Shell using Cloud Shell’s built-in text editor.
 
-*  To start, open the editor by clicking on the `walkthrough orion-editor-icon` icon.
+*  To start, open the editor by clicking on the <walkthrough-orion-editor-icon></walkthrough-orion-editor-icon> icon.
 *  Look at the source file for this tutorial by opening `tutorial.md`.
-*  Try making a change to the file for this tutorial, then saving it using the `walkthrough editor-spotlight "fileMenu" "file menu"`.
+*  Try making a change to the file for this tutorial, then saving it using the <walkthrough-editor-spotlight spotlightId="fileMenu" text="file menu"></walkthrough-editor-spotlight>.
 
 To restart the tutorial with your changes, run:
 ```bash
@@ -103,9 +103,12 @@ In the Markdown for your tutorial, you may include special directives that are s
 
 
 ### Trigger file actions in the text editor
-To include a link to `walkthrough editor-open-file "cloud-shell-tutorials/tutorial.md" "open a file for editing"`, use:
+To include a link to <walkthrough-editor-open-file filePath="cloud-shell-tutorials/tutorial.md" text="open a file for editing"></walkthrough-editor-open-file>, use:
 
-    `walkthrough editor-open-file "cloud-shell-tutorials/tutorial.md" "open a file for editing"`
+    <walkthrough-editor-open-file
+        filePath="cloud-shell-tutorials/tutorial.md"
+        text="open a file for editing">
+    </walkthrough-editor-open-file>
 
 
 ### Highlight a UI element
@@ -114,13 +117,17 @@ You can also direct the user’s attention to an element on the screen that you 
 
 You may want to show people where to find the web preview icon to view the web server running in their Cloud Shell virtual machine in a new browser tab.
 
-Display the web preview icon `walkthrough web-preview-icon` by including this in your tutorial’s Markdown:
+Display the web preview icon <walkthrough-web-preview-icon></walkthrough-web-preview-icon> by including this in your tutorial’s Markdown:
 
-    `walkthrough web-preview-icon`
+    <walkthrough-web-preview-icon>
+    </walkthrough-web-preview-icon>
 
-To create a link that shines a `walkthrough spotlight-pointer devshell-web-preview-button "spotlight on the web preview icon"`, add the following:
+To create a link that shines a <walkthrough-spotlight-pointer spotlightId="devshell-web-preview-button" text="spotlight on the web preview icon"></walkthrough-spotlight-pointer>, add the following:
 
-    `walkthrough spotlight-pointer devshell-web-preview-button "spotlight on the web preview icon"`
+    <walkthrough-spotlight-pointer
+        spotlightId="devshell-web-preview-button"
+        text="spotlight on the web preview icon">
+    </walkthrough-spotlight-pointer>
 
 You can find a list of supported spotlight targets in the [documentation for Cloud Shell Tutorials](https://cloud.google.com/shell/docs/tutorials).
 
@@ -160,7 +167,7 @@ Likewise, once you've replaced `YOUR_REPO_URL_HERE` and `TUTORIAL_FILE.md` in th
 
 ## Congratulations
 
-`walkthrough conclusion-trophy`
+<walkthrough-conclusion-trophy></walkthrough-conclusion-trophy>
 
 You’re all set!
 

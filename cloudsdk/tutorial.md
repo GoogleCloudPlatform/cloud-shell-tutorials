@@ -15,7 +15,7 @@ gcloud projects list
 
 To create a project, run:
 ```bash
-gcloud projects create <ENTER-PROJECT-ID> 
+gcloud projects create <ENTER-PROJECT-ID>
 ```
 
 **Tip**: Use `--help` with any gcloud command to bring up its documentation.
@@ -26,9 +26,9 @@ Click the **Continue** button to move to the next step.
 
 The format flag (along with projections - more on that coming up) can be used to format the default output (pretty-printed messages to `stdout`).
 
-Among the variety of formats available, output can be printed in `json`, `csv`, `text`, `value`, `table`, and `yaml` format. 
+Among the variety of formats available, output can be printed in `json`, `csv`, `text`, `value`, `table`, and `yaml` format.
 
-**Tip**: When scripting with `gcloud`, don’t depend on the raw output of `gcloud` commands; they may change with a future release! Use the `--format` flag to mitigate the effects of these changes and script against a more predictable structure (like a json-formatted result). 
+**Tip**: When scripting with `gcloud`, don’t depend on the raw output of `gcloud` commands; they may change with a future release! Use the `--format` flag to mitigate the effects of these changes and script against a more predictable structure (like a json-formatted result).
 
 For starters, run this `gcloud` command with a trusty format flag:
 ```bash
@@ -40,7 +40,7 @@ gcloud projects list --format=flattened --limit=1
 ```
 Continue on to the next step to discover more involved uses of the `--format` flag.
 
-## Format but fancier 
+## Format but fancier
 
 There’s a lot you can accomplish with just the format flag.
 
@@ -59,9 +59,9 @@ Continue on to learn about projections.
 
 ## Project, then format
 
-Before we move forward, we need to define the previously alluded term of  **projections**. 
+Before we move forward, we need to define the previously alluded term of  **projections**.
 
-A projection is a list of keys that selects a resource’s data values. You can read about all available projections using `gcloud topic projections`. 
+A projection is a list of keys that selects a resource’s data values. You can read about all available projections using `gcloud topic projections`.
 
 It’s often used along with the format flag when the data of the desired format (like `csv` and `table`) cannot be nested (though it can be used with nestable data). It is also used to transform or apply logic directly to the data returned.
 
@@ -77,9 +77,9 @@ gcloud projects list --format="csv(name,createTime)"
 Taking this a step further, you can control how these fields are displayed using field attributes; these are properties like the label value of a column’s output, alignment of column content, and the sort order of rows.
 
 **Tip**: Fields and field attributes can be defined using this structure: --format=type[attribute,...]
-(field.transform():attribute,...). 
+(field.transform():attribute,...).
 
-In practice, this would look like: 
+In practice, this would look like:
 ```bash
 gcloud compute instances list --format="json(zone.basename():sort=1:label=zone,name)"
 ```
@@ -124,13 +124,13 @@ gcloud projects list --format=json --filter="createTime.date('%d-%m-%Y')>1-1-201
 
 For a more extensive list of available filter operations, run `gcloud topic filters --help`.
 
-You’re all done! 
+You’re all done!
 
 ## Congratulations
 
-`walkthrough conclusion-trophy`
+<walkthrough-conclusion-trophy></walkthrough-conclusion-trophy>
 
-You’re all set! 
+You’re all set!
 
 You can now filter and format to your heart’s content. Read the help of `gcloud topic filters` and `gcloud topic formats` for a detailed look at what these flags can do.
 

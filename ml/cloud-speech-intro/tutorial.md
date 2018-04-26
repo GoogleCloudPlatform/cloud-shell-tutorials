@@ -82,7 +82,7 @@ cd ~/cloud-shell-tutorials/ml/cloud-speech-intro
 You'll remain in this directory for the rest of the tutorial.
 
 Bring up the `request.json` file
-`walkthrough editor-open-file "cloud-shell-tutorials/ml/cloud-speech-intro/request.json" "in the text editor"`.
+<walkthrough-editor-open-file filePath="cloud-shell-tutorials/ml/cloud-speech-intro/request.json" text="in the text editor"></walkthrough-editor-open-file><walkthrough-alt>in the text editor</walkthrough-alt>.
 
 It should look like this:
 
@@ -163,7 +163,7 @@ For example, if you had a Spanish audio file, you could set the `language_code` 
 
 ## Congratulations!
 
-`walkthrough conclusion-trophy`
+<walkthrough-conclusion-trophy></walkthrough-conclusion-trophy>
 
 
 You've learned how to perform speech to text transcription with the Speech API. In this example you passed the API the Google Cloud Storage URI of your audio file. Alternatively, you can pass a base64 encoded string of your audio content.

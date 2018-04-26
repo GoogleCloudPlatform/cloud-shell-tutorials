@@ -88,7 +88,7 @@ The first Natural Language API method we'll use is `analyzeEntities`. With this 
 > *Joanne Rowling, who writes under the pen names J. K. Rowling and Robert Galbraith, is a British novelist and screenwriter who wrote the Harry Potter fantasy series.*
 
 Bring up the `request.json` file
-`walkthrough editor-open-file "cloud-shell-tutorials/ml/cloud-nl-intro/request.json" "in the text editor"`.
+<walkthrough editor-open-file filePath="cloud-shell-tutorials/ml/cloud-nl-intro/request.json" text="in the text editor"></walkthrough-editor-open-file><walkthrough-alt>in the text editor</walkthrough-alt>.
 
 It should look like this:
 
@@ -178,7 +178,7 @@ Next, we'll use the Natural Language API to perform sentiment analysis.
 In addition to extracting entities, the Natural Language API also lets you perform sentiment analysis on a block of text. This JSON request will include the same parameters as the request above, but this time change the text to include something with a stronger sentiment.
 
 Bring up the `request2.json` file
-`walkthrough editor-open-file "cloud-shell-tutorials/ml/cloud-nl-intro/request2.json" "in the text editor"`.
+<walkthrough editor-open-file filePath="cloud-shell-tutorials/ml/cloud-nl-intro/request2.json" text="in the text editor"></walkthrough-editor-open-file><walkthrough-alt>in the text editor</walkthrough-alt>.
 
 It should look like the following. (Feel free to replace the `content` below with your own text).
 
@@ -251,7 +251,7 @@ In addition to providing sentiment details on the entire text document, the Natu
 In this case, getting a sentiment score for the entire sentence as you did above might not be so useful. If this was a restaurant review and there were hundreds of reviews for the same restaurant, you'd want to know exactly which things people liked and didn't like in their reviews. Fortunately, the Natural Language API has a method that lets you get the sentiment for each entity in the text, called `analyzeEntitySentiment`. Let's see how it works!
 
 Bring up the `request3.json` file
-`walkthrough editor-open-file "cloud-shell-tutorials/ml/cloud-nl-intro/request3.json" "in the text editor"`.
+<walkthrough editor-open-file filePath="cloud-shell-tutorials/ml/cloud-nl-intro/request3.json" text="in the text editor"></walkthrough-editor-open-file><walkthrough-alt>in the text editor</walkthrough-alt>.
 
 It should look like this:
 
@@ -340,7 +340,7 @@ Looking at the Natural Language API's third method - text annotation - you'll di
 Try it out with a simple sentence. This JSON request will be similar to the ones above, with the addition of a features key. This will tell the API that we'd like to perform syntax annotation.
 
 Bring up the `request4.json` file
-`walkthrough editor-open-file "cloud-shell-tutorials/ml/cloud-nl-intro/request4.json" "in the text editor"`.
+<walkthrough editor-open-file filePath="cloud-shell-tutorials/ml/cloud-nl-intro/request4.json" text="in the text editor"></walkthrough-editor-open-file><walkthrough-alt>in the text editor</walkthrough-alt>.
 
 It should look like this:
 
@@ -406,7 +406,7 @@ The Natural Language API also supports languages other than English (full list  
 
 
 Bring up the `request5.json` file
-`walkthrough editor-open-file "cloud-shell-tutorials/ml/cloud-nl-intro/request5.json" "in the text editor"`.
+<walkthrough editor-open-file filePath="cloud-shell-tutorials/ml/cloud-nl-intro/request5.json" text="in the text editor"></walkthrough-editor-open-file><walkthrough-alt>in the text editor</walkthrough-alt>.
 
 It should look like this:
 
@@ -525,7 +525,7 @@ Notice that in addition to the entity analysis, the language is correctly detect
 
 ## Congratulations!
 
-`walkthrough conclusion-trophy`
+<walkthrough-conclusion-trophy></walkthrough-conclusion-trophy>
 
 You've learned how to perform text analysis with the Cloud Natural Language API by extracting entities, analyzing sentiment, and doing syntax annotation.
 

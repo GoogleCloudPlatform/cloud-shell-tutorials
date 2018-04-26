@@ -135,7 +135,7 @@ The languages returned by this sample are "pt" and "ja". These are the  [ISO-639
 
 ## Congratulations!
 
-`walkthrough conclusion-trophy`
+<walkthrough-conclusion-trophy></walkthrough-conclusion-trophy>
 
 You've learned how to translate text with the Cloud Translation API!
 

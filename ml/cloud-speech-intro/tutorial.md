@@ -82,7 +82,7 @@ cd ~/cloud-shell-tutorials/ml/cloud-speech-intro
 You'll remain in this directory for the rest of the tutorial.
 
 Bring up the `request.json` file
-<walkthrough-editor-open-file filePath="cloud-shell-tutorials/ml/cloud-speech-intro/request.json" text="in the text editor"></walkthrough-editor-open-file><walkthrough-alt>in the text editor</walkthrough-alt>.
+<walkthrough-editor-open-file filePath="cloud-shell-tutorials/ml/cloud-speech-intro/request.json">in the text editor</walkthrough-editor-open-file>.
 
 It should look like this:
 

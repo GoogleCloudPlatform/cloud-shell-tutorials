@@ -45,7 +45,7 @@ You can edit a file stored in Cloud Shell using Cloud Shell’s built-in text ed
 
 *  To start, open the editor by clicking on the <walkthrough-orion-editor-icon></walkthrough-orion-editor-icon> icon.
 *  Look at the source file for this tutorial by opening `tutorial.md`.
-*  Try making a change to the file for this tutorial, then saving it using the <walkthrough-editor-spotlight spotlightId="fileMenu" text="file menu"></walkthrough-editor-spotlight><walkthrough-alt>file menu</walkthrough-alt>.
+*  Try making a change to the file for this tutorial, then saving it using the <walkthrough-editor-spotlight spotlightId="fileMenu">file menu</walkthrough-editor-spotlight>.
 
 To restart the tutorial with your changes, run:
 ```bash
@@ -103,7 +103,7 @@ In the Markdown for your tutorial, you may include special directives that are s
 
 
 ### Trigger file actions in the text editor
-To include a link to <walkthrough-editor-open-file filePath="cloud-shell-tutorials/tutorial.md" text="open a file for editing"></walkthrough-editor-open-file><walkthrough-alt>open a file for editing</walkthrough-alt>, use:
+To include a link to <walkthrough-editor-open-file filePath="cloud-shell-tutorials/tutorial.md">open a file for editing</walkthrough-editor-open-file>, use:
 
     <walkthrough-editor-open-file
         filePath="cloud-shell-tutorials/tutorial.md"
@@ -122,7 +122,7 @@ Display the web preview icon <walkthrough-web-preview-icon></walkthrough-web-pre
     <walkthrough-web-preview-icon>
     </walkthrough-web-preview-icon>
 
-To create a link that shines a <walkthrough-spotlight-pointer spotlightId="devshell-web-preview-button" text="spotlight on the web preview icon"></walkthrough-spotlight-pointer><walkthrough-alt>spotlight on the web preview icon</walkthrough-alt>, add the following:
+To create a link that shines a <walkthrough-spotlight-pointer spotlightId="devshell-web-preview-button">spotlight on the web preview icon</walkthrough-spotlight-pointer>, add the following:
 
     <walkthrough-spotlight-pointer
         spotlightId="devshell-web-preview-button"

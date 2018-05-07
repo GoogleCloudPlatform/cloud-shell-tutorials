@@ -106,8 +106,8 @@ In the Markdown for your tutorial, you may include special directives that are s
 To include a link to <walkthrough-editor-open-file filePath="cloud-shell-tutorials/tutorial.md">open a file for editing</walkthrough-editor-open-file>, use:
 
     <walkthrough-editor-open-file
-        filePath="cloud-shell-tutorials/tutorial.md"
-        text="open a file for editing">
+        filePath="cloud-shell-tutorials/tutorial.md">
+      open a file for editing
     </walkthrough-editor-open-file>
 
 
@@ -125,8 +125,8 @@ Display the web preview icon <walkthrough-web-preview-icon></walkthrough-web-pre
 To create a link that shines a <walkthrough-spotlight-pointer spotlightId="devshell-web-preview-button">spotlight on the web preview icon</walkthrough-spotlight-pointer>, add the following:
 
     <walkthrough-spotlight-pointer
-        spotlightId="devshell-web-preview-button"
-        text="spotlight on the web preview icon">
+        spotlightId="devshell-web-preview-button">
+      spotlight on the web preview icon
     </walkthrough-spotlight-pointer>
 
 You can find a list of supported spotlight targets in the [documentation for Cloud Shell Tutorials](https://cloud.google.com/shell/docs/tutorials).

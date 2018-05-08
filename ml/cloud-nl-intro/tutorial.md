@@ -77,7 +77,7 @@ Next, you'll use the Natural Language API to analyze *entities* in text.
 First, change to this directory in the cloud shell:
 
 ```bash
-cd ~/cloud-shell-tutorials/ml/cloud-nl-intro
+cd ml/cloud-nl-intro
 ```
 
 You'll remain in this directory for the rest of the tutorial.
@@ -88,7 +88,7 @@ The first Natural Language API method we'll use is `analyzeEntities`. With this 
 > *Joanne Rowling, who writes under the pen names J. K. Rowling and Robert Galbraith, is a British novelist and screenwriter who wrote the Harry Potter fantasy series.*
 
 Bring up the `request.json` file
-<walkthrough editor-open-file filePath="cloud-shell-tutorials/ml/cloud-nl-intro/request.json">in the text editor</walkthrough-editor-open-file>.
+<walkthrough-editor-open-file filePath="cloud-shell-tutorials/ml/cloud-nl-intro/request.json">in the text editor</walkthrough-editor-open-file>.
 
 It should look like this:
 

@@ -76,7 +76,7 @@ Next, you'll use the Speech API to make a transcription request.
 First, change to this directory in the cloud shell:
 
 ```bash
-cd ~/cloud-shell-tutorials/ml/cloud-speech-intro
+cd ml/cloud-speech-intro
 ```
 
 You'll remain in this directory for the rest of the tutorial.

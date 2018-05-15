@@ -79,7 +79,7 @@ Next, you'll send a request to the Vision API.
 First, change to this directory in the cloud shell:
 
 ```bash
-cd ~/cloud-shell-tutorials/ml/cloud-vision-intro
+cd ml/cloud-vision-intro
 ```
 
 We'll send a larger version of this image (of donuts) to the Vision API:

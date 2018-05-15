@@ -75,7 +75,7 @@ Next, you'll use the Natural Language API's `classifyText` method to classify a 
 First, change to this directory in the cloud shell:
 
 ```bash
-cd ~/cloud-shell-tutorials/ml/cloud-nl-text-classification
+cd ml/cloud-nl-text-classification
 ```
 
 You'll remain in this directory for the rest of the tutorial.
@@ -186,8 +186,14 @@ Then run the following commands from Cloud Shell to create a service account:
 
 ```bash
 gcloud iam service-accounts create my-account --display-name my-account
+```
+```bash
 gcloud projects add-iam-policy-binding $PROJECT --member=serviceAccount:my-account@$PROJECT.iam.gserviceaccount.com --role=roles/bigquery.admin
+```
+```bash
 gcloud iam service-accounts keys create key.json --iam-account=my-account@$PROJECT.iam.gserviceaccount.com
+```
+```bash
 export GOOGLE_APPLICATION_CREDENTIALS=key.json
 ```
 

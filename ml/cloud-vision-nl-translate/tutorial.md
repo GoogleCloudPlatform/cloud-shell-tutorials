@@ -77,7 +77,7 @@ Next, you'll send a request to the Cloud Vision API.
 First, change to this directory in the cloud shell:
 
 ```bash
-cd ~/cloud-shell-tutorials/ml/cloud-vision-nl-translate
+cd ml/cloud-vision-nl-translate
 ```
 
 You'll remain in this directory for the rest of the tutorial.

@@ -103,7 +103,7 @@ It should look like this:
 
 We can send this text to the NL API's `classifyText` method with the following curl command:
 
-```
+```bash
 curl "https://language.googleapis.com/v1/documents:classifyText?key=${API_KEY}" \
   -s -X POST -H "Content-Type: application/json" --data-binary @request.json
 ```
@@ -243,11 +243,13 @@ for file in files:
 
 print("Writing NL API article data to BigQuery...")
 # Write article text + category data to BQ
-errors = bq_client.create_rows(table, rows_for_bq)
+errors = bq_client.insert_rows(table, rows_for_bq)
 assert errors == []
 ```
 
-We're ready to start classifying articles and importing them to BigQuery. Run the `classify-text.py` script like this:
+Be sure to save your edits.
+
+Now we're ready to start classifying articles and importing them to BigQuery. Run the `classify-text.py` script like this:
 
 ```bash
 python classify-text.py

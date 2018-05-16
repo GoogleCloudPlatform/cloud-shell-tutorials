@@ -23,7 +23,7 @@ Click the **Continue** button to move to the next step.
 If you don't have a Google Cloud Platform (GCP) project yet, create one [here](https://cloud.google.com/free/). Be sure to sign up for free trial credits.
 **Note the name of your new project** — you'll use that in the next step.
 
-Return to this tab once you're done.
+Return to this window once you're done.
 
 ## Set your project in the Cloud Shell and create an API Key
 
@@ -66,7 +66,7 @@ Next, you'll enable the Natural Language API for your project, if you've not alr
 
 Click on [this link](https://console.cloud.google.com/flows/enableapi?apiid=language.googleapis.com) to enable the Natural Language API for your project.
 
-After you've enabled it, you don't need to do any further setup, as you've already set up an API key. Just return to this tab.
+After you've enabled it, you don't need to do any further setup, as you've already set up an API key. Just return to this window.
 
 Next, you'll use the Natural Language API's `classifyText` method to classify a news article.
 
@@ -75,7 +75,7 @@ Next, you'll use the Natural Language API's `classifyText` method to classify a 
 First, change to this directory in the cloud shell:
 
 ```bash
-cd ~/cloud-shell-tutorials/ml/cloud-nl-text-classification
+cd ml/cloud-nl-text-classification
 ```
 
 You'll remain in this directory for the rest of the tutorial.
@@ -103,7 +103,7 @@ It should look like this:
 
 We can send this text to the NL API's `classifyText` method with the following curl command:
 
-```
+```bash
 curl "https://language.googleapis.com/v1/documents:classifyText?key=${API_KEY}" \
   -s -X POST -H "Content-Type: application/json" --data-binary @request.json
 ```
@@ -186,8 +186,14 @@ Then run the following commands from Cloud Shell to create a service account:
 
 ```bash
 gcloud iam service-accounts create my-account --display-name my-account
+```
+```bash
 gcloud projects add-iam-policy-binding $PROJECT --member=serviceAccount:my-account@$PROJECT.iam.gserviceaccount.com --role=roles/bigquery.admin
+```
+```bash
 gcloud iam service-accounts keys create key.json --iam-account=my-account@$PROJECT.iam.gserviceaccount.com
+```
+```bash
 export GOOGLE_APPLICATION_CREDENTIALS=key.json
 ```
 
@@ -237,11 +243,13 @@ for file in files:
 
 print("Writing NL API article data to BigQuery...")
 # Write article text + category data to BQ
-errors = bq_client.create_rows(table, rows_for_bq)
+errors = bq_client.insert_rows(table, rows_for_bq)
 assert errors == []
 ```
 
-We're ready to start classifying articles and importing them to BigQuery. Run the `classify-text.py` script like this:
+Be sure to save your edits.
+
+Now we're ready to start classifying articles and importing them to BigQuery. Run the `classify-text.py` script like this:
 
 ```bash
 python classify-text.py

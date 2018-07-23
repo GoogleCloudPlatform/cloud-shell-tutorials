@@ -25,7 +25,7 @@ Click the **Continue** button to move to the next step.
 
 If you don't have a Google Cloud Platform (GCP) account yet, create one [here](https://cloud.google.com/free/). Be sure to sign up for free trial credits.
 
-If you don't have a Google Cloud Platform (GCP) project yet, create one [here](https://console.google.com/).
+If you don't have a Google Cloud Platform (GCP) project yet, create one [here](https://console.cloud.google.com/).
 
 **Note the name of your new project** — you'll use that in the next step.
 

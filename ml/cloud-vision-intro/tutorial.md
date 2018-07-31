@@ -81,7 +81,7 @@ After you've enabled it, you don't need to do any further setup, as you've alrea
 Next, you'll send a request to the Vision API.
 
 
-## Create your Vision API request
+## Call the Vision API's label detection method
 
 We'll send a version of this image (of donuts) to the Vision API:
 
@@ -113,11 +113,6 @@ It should look like this:
 ```
 
 The first Cloud Vision API feature we'll explore is label detection. This method will return a list of labels (words) of what's in your image.
-
-Click the **Continue** button to move to the next step.
-
-## Call the Vision API's label detection method
-
 
 We're now ready to call the Vision API with curl:
 
@@ -281,8 +276,6 @@ Cool! And now you probably really want a beignet (sorry). This is similar to sea
 [Google Images](https://images.google.com/).
 But with Cloud Vision, we can access this functionality with an easy-to-use REST API and integrate it into our applications.
 
-Click the **Continue** button to move to the next step.
-
 ## Face and Landmark Detection with the Vision API
 
 Next we'll explore the face and landmark detection methods of the Vision API. The face detection method returns data on faces found in an image, including the emotions of the faces and their location in the image. Landmark detection can identify common (and obscure) landmarks - it returns the name of the landmark, its latitude longitude coordinates, and the location of where the landmark was identified in an image.
@@ -321,8 +314,6 @@ It contains the following request. Note the 'types' specified:
 ```
 
 Next, we'll call the Vision API with this request.
-
-## Call the Vision API and parse the response
 
 Now you're ready to call the Vision API using curl as before:
 

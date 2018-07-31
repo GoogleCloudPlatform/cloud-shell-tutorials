@@ -19,7 +19,9 @@ What you'll learn:
 
 Click the **Continue** button to move to the next step.
 
-## Create a Google Cloud Platform (GCP) project if you don't have one
+## Setup 
+
+### Create a Google Cloud Platform (GCP) project if you don't have one
 
 **If you already have a Google Cloud Platform account and project, you can skip this step**.
 
@@ -42,7 +44,7 @@ Now run the following command to ensure that the Cloud Shell is using the correc
   gcloud config set project $PROJECT
 ```
 
-## Create and store an API Key
+### Create and store an API Key
 
 We'll be using curl to send a request to the Vision API, and we'll need to generate an API key to pass in our request URL.
 
@@ -72,7 +74,7 @@ export API_KEY=<YOUR_API_KEY>
 
 Next, you'll enable the Vision API for your project, if you've not already done so.
 
-## Enable the Vision API
+### Enable the Vision API
 
 Click on [this link](https://console.cloud.google.com/flows/enableapi?project=$PROJECT&apiid=vision.googleapis.com) to enable the Vision API for your project, if you haven't already done so.
 

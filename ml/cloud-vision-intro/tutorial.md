@@ -1,8 +1,8 @@
 # Detect Labels, Faces, and Landmarks in Images with the Cloud Vision API
 
+This interactive tutorial will show you how to use the Google Cloud Vision API, walking you through the setup steps, and using the API directly to detect objects, faces, and other entities in images.
 
 ## Overview
-
 
 The [Cloud Vision API](https://cloud.google.com/vision/) lets you understand the content of an image by encapsulating powerful machine learning models in a simple REST API.
 
@@ -15,29 +15,38 @@ What you'll learn:
 
 ![Vision API logo](https://storage.googleapis.com/aju-dev-demos-codelabs/images/Vision_logo_sm.png)
 
-**Time to complete**: About 30 minutes
+**Time to complete**: About 20 minutes
 
 Click the **Continue** button to move to the next step.
 
-## Create a Google Cloud Platform (GCP) project if you don't have one
+## Setup 
 
-**If you already have a Google Cloud Platform project, you can skip this step**.
+### Create a Google Cloud Platform (GCP) project. **If you already have a Google Cloud Platform account and project, you can skip this step.**
 
-If you don't have a Google Cloud Platform (GCP) project yet, create one [here](https://cloud.google.com/free/). Be sure to sign up for free trial credits.
-**Note the name of your new project** — you'll use that in the next step.
+If you don't have a Google Cloud Platform (GCP) account yet, create one [here](https://cloud.google.com/free/). Be sure to sign up for free trial credits.
 
-Return to this window once you're done.
+If you don't have a Google Cloud Platform (GCP) project yet, create one [here](https://console.cloud.google.com/).
 
-## Set your project in the Cloud Shell and create an API Key
+### Set your Project ID in your shell environment
 
-First, run the following command to ensure that the Cloud Shell is using the correct GCP project
-(replacing `<project-name>` with the name of your project):
+On the [Cloud Console](https://console.cloud.google.com/), find your Project ID in the area highlighted below:
 
+![project-id](https://storage.googleapis.com/mco-tutorials/project-id.png)
+
+Save your project Id in an environment variable, which you'll use in subsequent steps.
 ```bash
-  gcloud config set project <project-name>
+  export PROJECT=<your-project-id>
 ```
 
-Next, since we'll be using curl to send a request to the Vision API, we'll need to generate an API key to pass in our request URL.
+Now run the following command to ensure that the Cloud Shell is using the correct GCP project:
+
+```bash
+  gcloud config set project $PROJECT
+```
+
+### Create and store an API Key
+
+We'll be using curl to send a request to the Vision API, and we'll need to generate an API key to pass in our request URL.
 
 > **Note**: If you've already created an API key in this project during one of the other Cloud Shell tutorials, you can just use the existing key— you don't need to create another one.  Just be sure to set the `API_KEY` environment variable with your existing key as described below.
 
@@ -65,24 +74,18 @@ export API_KEY=<YOUR_API_KEY>
 
 Next, you'll enable the Vision API for your project, if you've not already done so.
 
-## Enable the Vision API
+### Enable the Vision API
 
-Click on [this link](https://console.cloud.google.com/flows/enableapi?apiid=vision.googleapis.com) to enable the Vision API for your project, if you haven't already done so.
+Click on [this link](https://console.cloud.google.com/flows/enableapi?apiid=vision.googleapis.com) to enable the Vision API for your project, if you haven't already done so. Select your project from the pull-down menu (you may need to search for it by name) and then click the continue button.
 
 After you've enabled it, you don't need to do any further setup, as you've already set up an API key. Just return to this window.
 
 Next, you'll send a request to the Vision API.
 
 
-## Create your Vision API request
+## Call the Vision API's label detection method
 
-First, change to this directory in the cloud shell:
-
-```bash
-cd ml/cloud-vision-intro
-```
-
-We'll send a larger version of this image (of donuts) to the Vision API:
+We'll send a version of this image (of donuts) to the Vision API:
 
 ![donuts](https://storage.googleapis.com/aju-dev-demos-codelabs/images/vision_donuts_sm.jpeg)
 
@@ -112,10 +115,6 @@ It should look like this:
 ```
 
 The first Cloud Vision API feature we'll explore is label detection. This method will return a list of labels (words) of what's in your image.
-
-
-## Call the Vision API's label detection method
-
 
 We're now ready to call the Vision API with curl:
 
@@ -279,7 +278,6 @@ Cool! And now you probably really want a beignet (sorry). This is similar to sea
 [Google Images](https://images.google.com/).
 But with Cloud Vision, we can access this functionality with an easy-to-use REST API and integrate it into our applications.
 
-
 ## Face and Landmark Detection with the Vision API
 
 Next we'll explore the face and landmark detection methods of the Vision API. The face detection method returns data on faces found in an image, including the emotions of the faces and their location in the image. Landmark detection can identify common (and obscure) landmarks - it returns the name of the landmark, its latitude longitude coordinates, and the location of where the landmark was identified in an image.
@@ -318,8 +316,6 @@ It contains the following request. Note the 'types' specified:
 ```
 
 Next, we'll call the Vision API with this request.
-
-## Call the Vision API and parse the response
 
 Now you're ready to call the Vision API using curl as before:
 

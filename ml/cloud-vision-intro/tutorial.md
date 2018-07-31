@@ -1,6 +1,6 @@
 # Detect Labels, Faces, and Landmarks in Images with the Cloud Vision API
 
-This interactive tutorial will how you how to use the Google Cloud Vision API. It will walk you through the setup, and in no time you'll be using the API directly to detect objects, faces, and other entities in images.
+This interactive tutorial will show you how to use the Google Cloud Vision API, walking you through the setup steps, and using the API directly to detect objects, faces, and other entities in images.
 
 ## Overview
 
@@ -76,7 +76,7 @@ Next, you'll enable the Vision API for your project, if you've not already done 
 
 ### Enable the Vision API
 
-Click on [this link](https://console.cloud.google.com/flows/enableapi?apiid=vision.googleapis.com) to enable the Vision API for your project, if you haven't already done so.
+Click on [this link](https://console.cloud.google.com/flows/enableapi?apiid=vision.googleapis.com) to enable the Vision API for your project, if you haven't already done so. Select your project from the pull-down menu (you may need to search for it by name) and then click the continue button.
 
 After you've enabled it, you don't need to do any further setup, as you've already set up an API key. Just return to this window.
 

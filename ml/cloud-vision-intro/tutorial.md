@@ -15,7 +15,7 @@ What you'll learn:
 
 ![Vision API logo](https://storage.googleapis.com/aju-dev-demos-codelabs/images/Vision_logo_sm.png)
 
-**Time to complete**: About 15 minutes
+**Time to complete**: About 20 minutes
 
 Click the **Continue** button to move to the next step.
 
@@ -27,8 +27,8 @@ If you don't have a Google Cloud Platform (GCP) account yet, create one [here](h
 
 If you don't have a Google Cloud Platform (GCP) project yet, create one [here](https://console.cloud.google.com/).
 
-On the cloud console, find your Project ID
-as illustrated by this image:
+On the [Cloud Console](https://console.cloud.google.com/), find your Project ID in the area highlighted below:
+
 ![project-id](https://storage.googleapis.com/mco-tutorials/project-id.png)
 
 Save your project Id in an environment variable, which you'll use in subsequent steps.
@@ -36,17 +36,15 @@ Save your project Id in an environment variable, which you'll use in subsequent 
   export PROJECT=<your-project-id>
 ```
 
-Click the **Continue** button to move to the next step.
-
-## Set your project in the Cloud Shell and create an API Key
-
-First, run the following command to ensure that the Cloud Shell is using the correct GCP project:
+Now run the following command to ensure that the Cloud Shell is using the correct GCP project:
 
 ```bash
   gcloud config set project $PROJECT
 ```
 
-Next, since we'll be using curl to send a request to the Vision API, we'll need to generate an API key to pass in our request URL.
+## Create and store an API Key
+
+We'll be using curl to send a request to the Vision API, and we'll need to generate an API key to pass in our request URL.
 
 > **Note**: If you've already created an API key in this project during one of the other Cloud Shell tutorials, you can just use the existing key— you don't need to create another one.  Just be sure to set the `API_KEY` environment variable with your existing key as described below.
 
@@ -76,7 +74,7 @@ Next, you'll enable the Vision API for your project, if you've not already done 
 
 ## Enable the Vision API
 
-Click on [this link](https://console.cloud.google.com/flows/enableapi?apiid=vision.googleapis.com) to enable the Vision API for your project, if you haven't already done so.
+Click on [this link](https://console.cloud.google.com/flows/enableapi?project=$PROJECT&apiid=vision.googleapis.com) to enable the Vision API for your project, if you haven't already done so.
 
 After you've enabled it, you don't need to do any further setup, as you've already set up an API key. Just return to this window.
 

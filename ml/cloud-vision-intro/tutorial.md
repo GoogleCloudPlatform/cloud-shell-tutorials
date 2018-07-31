@@ -27,12 +27,16 @@ If you don't have a Google Cloud Platform (GCP) account yet, create one [here](h
 
 If you don't have a Google Cloud Platform (GCP) project yet, create one [here](https://console.cloud.google.com/).
 
+On the cloud console, find your Project ID
+as illustrated by this image:
+![project-id](https://storage.googleapis.com/aju-dev-demos-codelabs/images/project.png)
+
 Save your project Id in an environment variable, which you'll use in subsequent steps.
 ```bash
   export PROJECT=<your-project-id>
 ```
 
-Return to this window once you're done.
+Click the **Continue** button to move to the next step.
 
 ## Set your project in the Cloud Shell and create an API Key
 
@@ -81,13 +85,7 @@ Next, you'll send a request to the Vision API.
 
 ## Create your Vision API request
 
-First, change to this directory in the cloud shell:
-
-```bash
-cd ml/cloud-vision-intro
-```
-
-We'll send a larger version of this image (of donuts) to the Vision API:
+We'll send a version of this image (of donuts) to the Vision API:
 
 ![donuts](https://storage.googleapis.com/aju-dev-demos-codelabs/images/vision_donuts_sm.jpeg)
 
@@ -118,6 +116,7 @@ It should look like this:
 
 The first Cloud Vision API feature we'll explore is label detection. This method will return a list of labels (words) of what's in your image.
 
+Click the **Continue** button to move to the next step.
 
 ## Call the Vision API's label detection method
 
@@ -284,6 +283,7 @@ Cool! And now you probably really want a beignet (sorry). This is similar to sea
 [Google Images](https://images.google.com/).
 But with Cloud Vision, we can access this functionality with an easy-to-use REST API and integrate it into our applications.
 
+Click the **Continue** button to move to the next step.
 
 ## Face and Landmark Detection with the Vision API
 

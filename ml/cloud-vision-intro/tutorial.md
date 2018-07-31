@@ -15,7 +15,7 @@ What you'll learn:
 
 ![Vision API logo](https://storage.googleapis.com/aju-dev-demos-codelabs/images/Vision_logo_sm.png)
 
-**Time to complete**: About 30 minutes
+**Time to complete**: About 15 minutes
 
 Click the **Continue** button to move to the next step.
 
@@ -27,17 +27,19 @@ If you don't have a Google Cloud Platform (GCP) account yet, create one [here](h
 
 If you don't have a Google Cloud Platform (GCP) project yet, create one [here](https://console.cloud.google.com/).
 
-**Note the name of your new project** — you'll use that in the next step.
+Save your project Id in an environment variable, which you'll use in subsequent steps.
+```bash
+  export PROJECT=<your-project-id>
+```
 
 Return to this window once you're done.
 
 ## Set your project in the Cloud Shell and create an API Key
 
-First, run the following command to ensure that the Cloud Shell is using the correct GCP project
-(replacing `<project-name>` with the name of your project):
+First, run the following command to ensure that the Cloud Shell is using the correct GCP project:
 
 ```bash
-  gcloud config set project <project-name>
+  gcloud config set project $PROJECT
 ```
 
 Next, since we'll be using curl to send a request to the Vision API, we'll need to generate an API key to pass in our request URL.

@@ -21,13 +21,13 @@ Click the **Continue** button to move to the next step.
 
 ## Setup 
 
-### Create a Google Cloud Platform (GCP) project if you don't have one
-
-**If you already have a Google Cloud Platform account and project, you can skip this step**.
+### Create a Google Cloud Platform (GCP) project. **If you already have a Google Cloud Platform account and project, you can skip this step.**
 
 If you don't have a Google Cloud Platform (GCP) account yet, create one [here](https://cloud.google.com/free/). Be sure to sign up for free trial credits.
 
 If you don't have a Google Cloud Platform (GCP) project yet, create one [here](https://console.cloud.google.com/).
+
+### Set your Project ID in your shell environment
 
 On the [Cloud Console](https://console.cloud.google.com/), find your Project ID in the area highlighted below:
 

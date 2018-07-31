@@ -29,7 +29,7 @@ If you don't have a Google Cloud Platform (GCP) project yet, create one [here](h
 
 On the cloud console, find your Project ID
 as illustrated by this image:
-![project-id](https://storage.googleapis.com/aju-dev-demos-codelabs/images/project.png)
+![project-id](https://storage.googleapis.com/mco-tutorials/project-id.png)
 
 Save your project Id in an environment variable, which you'll use in subsequent steps.
 ```bash

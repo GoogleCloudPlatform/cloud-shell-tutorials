@@ -417,8 +417,7 @@ We've looked at the Vision API's label, face, and landmark detection methods, bu
 
 <walkthrough-conclusion-trophy></walkthrough-conclusion-trophy>
 
-[Share on Twitter]
-(https://twitter.com/intent/tweet?text=I%20just%20learned%20how%20%20to%20use%20the%20Cloud%20Vision%20API)
+[Share on Twitter](https://twitter.com/intent/tweet?text=I%20just%20learned%20how%20%20to%20use%20the%20Cloud%20Vision%20API)
 
 You've learned how to analyze images with the Vision API. In this example you passed the API the URLs of your images. Alternatively, you can pass a base64 encoded string of your image.
 

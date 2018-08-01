@@ -419,7 +419,7 @@ We've looked at the Vision API's label, face, and landmark detection methods, bu
 
 <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-![twitter-share](https://storage.googleapis.com/mco-tutorials/twitter-share.png)
+![twitter-share](https://storage.googleapis.com/mco-tutorials/twitter.png)
 
 [Share on Twitter](https://twitter.com/intent/tweet?text=I%20just%20learned%20how%20%20to%20use%20the%20Google%20Cloud%20Vision%20API%20-%20https://bit.ly/cloud-vision-tutorial%20#GCP)
 

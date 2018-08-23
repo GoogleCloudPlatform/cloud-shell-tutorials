@@ -37,21 +37,21 @@ and execute it in Cloud Shell to generate sample errors.
 COUNTER=0
 while [  $COUNTER -lt 11 ]; do
     gcloud beta error-reporting events report --service tutorial --service-version v$((COUNTER/10+1)) \
-        --message "java.lang.RuntimeException: Error rendering template $COUNTER
+        --message &quot;java.lang.RuntimeException: Error rendering template $COUNTER
           at com.example.TestClass.test(TestClass.java:51)
           at com.example.AnotherClass(AnotherClass.java:25)
           at javax.servlet.http.HttpServlet.service (HttpServlet.java:617)
-          at javax.servlet.http.HttpServlet.service (HttpServlet.java:717)"
+          at javax.servlet.http.HttpServlet.service (HttpServlet.java:717)&quot;
     if [ $COUNTER -lt 3 ]; then
       gcloud beta error-reporting events report --service tutorial --service-version v1 \
-          --message "java.lang.ArrayIndexOutOfBoundsException: $COUNTER
+          --message &quot;java.lang.ArrayIndexOutOfBoundsException: $COUNTER
             at com.example.AppController.createUser(AppController.java:42)
             at com.example.User(User.java:31)
             at javax.servlet.http.HttpServlet.service (HttpServlet.java:617)
-            at javax.servlet.http.HttpServlet.service (HttpServlet.java:717)"
+            at javax.servlet.http.HttpServlet.service (HttpServlet.java:717)&quot;
     fi
     if [ $COUNTER -eq 10 ]; then
-      echo "All artificial errors reported."
+      echo &quot;All artificial errors reported.&quot;
     fi
     let COUNTER=COUNTER+1
 done
@@ -69,7 +69,8 @@ You'll use Stackdriver Error Reporting to see the reported errors at a glance.
 
 Open the [menu][spotlight-console-menu] on the left side of the console.
 
-Then, scroll to the **Stackdriver** category, and select **Error Reporting**.
+Then, scroll to the **Stackdriver** category, and select **Error
+Reporting**.
 
 <walkthrough-menu-navigation sectionId="CRASH_SECTION"></walkthrough-menu-navigation>
 
@@ -107,10 +108,10 @@ in Stackdriver Error Reporting.
 
 To do so:
 
-*   Click *Link to issue* at the top (you may need to open the **more actions**
+  *  Click *Link to issue* at the top (you may need to open the **more actions**
     menu to see this link).
-*   Enter `http://example.com/issues/1234` in the dialog.
-*   Click *Save*.
+  *  Enter `http://example.com/issues/1234` in the dialog.
+  *  Click *Save*.
 
 ### Explore stack traces
 
@@ -141,8 +142,8 @@ quickstart.
 Understand your application latency with the [Stackdriver
 Trace][trace-quickstart] quickstart.
 
-[errors-setup]: https://cloud.google.com/error-reporting/docs/how-to
 [debug-quickstart]: https://cloud.google.com/debugger/docs/quickstart
-[trace-quickstart]: https://cloud.google.com/trace/docs/quickstart
+[errors-setup]: https://cloud.google.com/error-reporting/docs/how-to
 [spotlight-console-menu]: walkthrough://spotlight-pointer?spotlightId=console-nav-menu
 [spotlight-open-devshell]: walkthrough://spotlight-pointer?spotlightId=devshell-activate-button
+[trace-quickstart]: https://cloud.google.com/trace/docs/quickstart

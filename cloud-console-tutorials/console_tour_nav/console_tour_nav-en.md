@@ -9,12 +9,12 @@ build and manage your applications on Google Cloud Platform.
 
 You'll learn about the following concepts:
 
--   GCP projects and resources
--   High-level resource overview and activity logs
--   Console navigation and search
--   User and permissions management
--   Technical support
--   GCP's browser-based command line
+  *  GCP projects and resources
+  *  High-level resource overview and activity logs
+  *  Console navigation and search
+  *  User and permissions management
+  *  Technical support
+  *  GCP's browser-based command line
 
 Let's get started!
 
@@ -32,8 +32,9 @@ low-level resources like Cloud Storage buckets and Compute Engine instances.
 ### Project navigation
 
 Easily navigate across your GCP projects using the [scope
-picker][spotlight-project-select] in Cloud Console. Switching projects will
-tailor the view to that project and all of its child resources.
+picker][spotlight-project-select] in Cloud
+Console. Switching projects will tailor the view to that project and all of its
+child resources.
 
 <walkthrough-project-setup></walkthrough-project-setup>
 
@@ -42,8 +43,8 @@ tailor the view to that project and all of its child resources.
 ### Service navigation
 
 Google Cloud services are accessible in the [left-hand navigation
-menu][spotlight-console-menu] organized by product area including Big Data,
-Compute, Networking, etc.
+menu][spotlight-console-menu] organized by
+product area including Big Data, Compute, Networking, etc.
 
 ### Section pinning
 
@@ -64,22 +65,26 @@ highlighting key metrics, billing, and other useful information.
 ### Customization
 
 You can customize your dashboard by clicking
-[Customize][spotlight-customize-dashboard]. Any card can be hidden, shown, and
-reordered on the page. Each card also has custom options accessible from the
-overflow menu when hovering a card.
+[Customize][spotlight-customize-dashboard].
+Any card can be hidden, shown, and reordered on the page. Each card also has
+custom options accessible from the overflow menu when hovering a card.
 
 ## View activity across your GCP resources
 
-With [Activity Stream][spotlight-activity-stream], you'll be able to understand
-all the activities that occur across your GCP resources in one place.
+With [Activity
+Stream][spotlight-activity-stream],
+you'll be able to understand all the activities that occur across your GCP
+resources in one place.
 
 See what your teammates are updating in any project to track down issues and
 audit access. Easily filter through the feed to find exactly what you need.
 
 ## Search across Cloud Console
 
-The [search bar][spotlight-search-bar] in Cloud Console allows you to quickly
-access Google Cloud products and any of your resources across GCP.
+The [search
+bar][spotlight-search-bar]
+in Cloud Console allows you to quickly access Google Cloud products and any of
+your resources across GCP.
 
 Try running a search for **App Engine** or the name of one of your projects.
 
@@ -116,9 +121,9 @@ directly from your browser. You can easily manage your projects and resources
 without having to install the Google Cloud SDK or other tools on your system.
 
 With <walkthrough-cloud-shell-icon></walkthrough-cloud-shell-icon> [Cloud
-Shell][spotlight-open-devshell], the Cloud SDK gcloud command-line tool and
-other utilities you need are always available, up to date and fully
-authenticated when you need them.
+Shell][spotlight-open-devshell],
+the Cloud SDK gcloud command-line tool and other utilities you need are always
+available, up to date and fully authenticated when you need them.
 
 [Learn more about Cloud Shell](https://cloud.google.com/shell/)
 
@@ -137,9 +142,9 @@ Head back to the Getting Started page for more tutorials.
 <walkthrough-menu-navigation sectionId="ONBOARDING_SECTION"></walkthrough-menu-navigation>
 
 [gcp-resources]: https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy
-[spotlight-project-select]: walkthrough://spotlight-pointer?spotlightId=purview-switcher
+[spotlight-activity-stream]: walkthrough://spotlight-pointer?cssSelector=.mat-tab-link:nth-of-type(2)
 [spotlight-console-menu]: walkthrough://spotlight-pointer?spotlightId=console-nav-menu
 [spotlight-customize-dashboard]: walkthrough://spotlight-pointer?cssSelector=.cfc-customize-button
-[spotlight-activity-stream]: walkthrough://spotlight-pointer?cssSelector=.mat-tab-link:nth-of-type(2)
-[spotlight-search-bar]: walkthrough://spotlight-pointer?cssSelector=.p6n-search-bar,.pcc-platform-bar-search-bar
 [spotlight-open-devshell]: walkthrough://spotlight-pointer?spotlightId=devshell-activate-button
+[spotlight-project-select]: walkthrough://spotlight-pointer?spotlightId=purview-switcher
+[spotlight-search-bar]: walkthrough://spotlight-pointer?cssSelector=.p6n-search-bar,.pcc-platform-bar-search-bar

@@ -1,6 +1,5 @@
 # Introduction to Cloud Pub/Sub
 
-<walkthrough-test-start-page url="/start?tutorial=pubsub_quickstart_v2"><.walkthrough-test-start-page>
 <walkthrough-tutorial-url url="https://cloud.google.com/pubsub/quickstart-console"></walkthrough-tutorial-url>
 
 <walkthrough-devshell-precreate></walkthrough-devshell-precreate>
@@ -8,9 +7,9 @@
 ## Introduction
 
 Cloud Pub/Sub is a fully-managed real-time messaging service that allows you to
-send and receive messages between independent applications. This tutorial gives
-a brief introduction to Cloud Pub/Sub's command-line interface using the
-`gcloud` command.
+send and receive messages independent applications. This tutorial gives a brief
+introduction to Cloud Pub/Sub's command-line interface using the `gcloud`
+command.
 
 ## Project Setup
 
@@ -187,17 +186,17 @@ Congratulations!
 
 <walkthrough-conclusion-trophy></walkthrough-conclusion-trophy>
 
-You have just walked through the basic concepts of Cloud Pub/Sub using the
-`gcloud` command line tool, and you got a glimpse of the Cloud Pub/Sub UI. The
-next step is to create your awesome applications! For more information, see [the
-Pub/Sub documentation][pubsub-docs].
+You have just walked through the basic concepts of Cloud
+Pub/Sub using the `gcloud` command line tool, and you got a glimpse of the Cloud
+Pub/Sub UI. The next step is to create your awesome applications! For more
+information, see [the Pub/Sub documentation][pubsub-docs].
 
 Here's what you can do next:
 
 [See code
 samples](https://cloud.google.com/pubsub/docs/quickstart-client-libraries)
 
-[spotlight-console-menu]: walkthrough://spotlight-pointer?spotlightId=console-nav-menu
-[spotlight-open-devshell]: walkthrough://spotlight-pointer?spotlightId=devshell-activate-button
-[spotlight-delete-button]: walkthrough://spotlight-pointer?cssSelector=.p6n-icon-delete
 [pubsub-docs]: https://cloud.google.com/pubsub/docs/
+[spotlight-console-menu]: walkthrough://spotlight-pointer?spotlightId=console-nav-menu
+[spotlight-delete-button]: walkthrough://spotlight-pointer?cssSelector=.p6n-icon-delete
+[spotlight-open-devshell]: walkthrough://spotlight-pointer?spotlightId=devshell-activate-button

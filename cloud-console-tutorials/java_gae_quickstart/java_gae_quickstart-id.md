@@ -206,7 +206,7 @@ Cloud Datastore adalah basis data NoSQL yang sangat skalabel untuk aplikasi Anda
 </walkthrough-tutorial-card>
 
 <walkthrough-tutorial-card
-  url="appengine/docs/go/googlecloudstorageclient/setting-up-cloud-storage/"
+  url="appengine/docs/java/googlecloudstorageclient/setting-up-cloud-storage/"
   icon="STORAGE_SECTION"
   label="cloudStorage">
 **Pelajari cara menggunakan Cloud Storage**

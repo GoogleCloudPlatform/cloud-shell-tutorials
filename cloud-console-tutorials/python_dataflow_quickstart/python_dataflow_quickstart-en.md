@@ -103,7 +103,7 @@ python -m apache_beam.examples.wordcount \
   --job_name {{job-name}}
 ```
 
-*   `output` is the bucket used by the WordCount example to store the job
+  *  `output` is the bucket used by the WordCount example to store the job
     results.
 
 ### Your job is running
@@ -185,24 +185,24 @@ Click [Delete][spotlight-delete-bucket] and confirm your deletion.
 
 Here's what you can do next:
 
-*   [Read more about the Word Count example][wordcount]
-*   [Learn about the Cloud Dataflow programming model][df-pipelines]
-*   [Explore the Apache Beam SDK on GitHub][beam-sdk]
+  *  [Read more about the Word Count example][wordcount]
+  *  [Learn about the Cloud Dataflow programming model][df-pipelines]
+  *  [Explore the Apache Beam SDK on GitHub][beam-sdk]
 
 Set up your local environment:
 
-*   [Use Java and Eclipse to run Dataflow][df-eclipse]
-*   [Use Java and Maven to run Dataflow][df-maven]
+  *  [Use Java and Eclipse to run Dataflow][df-eclipse]
+  *  [Use Java and Maven to run Dataflow][df-maven]
 
+[beam-sdk]: https://github.com/apache/beam/tree/master/sdks/python
+[dataflow-python-tutorial]: https://cloud.google.com/dataflow/docs/quickstarts/quickstart-python
 [df-eclipse]: https://cloud.google.com/dataflow/docs/quickstarts/quickstart-java-eclipse
 [df-maven]: https://cloud.google.com/dataflow/docs/quickstarts/quickstart-java-maven
 [df-pipelines]: https://cloud.google.com/dataflow/model/programming-model-beam
-[beam-sdk]: https://github.com/apache/beam/tree/master/sdks/python
-[wordcount]: https://beam.apache.org/get-started/wordcount-example/
 [gsutil-docs]: https://cloud.google.com/storage/docs/gsutil
-[dataflow-python-tutorial]: https://cloud.google.com/dataflow/docs/quickstarts/quickstart-python
-[spotlight-job-logs]: walkthrough://spotlight-pointer?cssSelector=#p6n-dax-job-logs-toggle
 [spotlight-buckets-link]: walkthrough://spotlight-pointer?cssSelector=.p6n-cloudstorage-path-link
-[spotlight-delete-bucket]: walkthrough://spotlight-pointer?cssSelector=#p6n-cloudstorage-delete-buckets
 [spotlight-console-menu]: walkthrough://spotlight-pointer?spotlightId=console-nav-menu
+[spotlight-delete-bucket]: walkthrough://spotlight-pointer?cssSelector=#p6n-cloudstorage-delete-buckets
+[spotlight-job-logs]: walkthrough://spotlight-pointer?cssSelector=#p6n-dax-job-logs-toggle
 [spotlight-open-devshell]: walkthrough://spotlight-pointer?spotlightId=devshell-activate-button
+[wordcount]: https://beam.apache.org/get-started/wordcount-example/

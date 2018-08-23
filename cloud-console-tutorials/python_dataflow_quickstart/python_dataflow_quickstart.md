@@ -22,8 +22,7 @@ project and perform initial setup.
 Google Cloud Platform organizes resources into projects. This allows you to
 collect all the related resources for a single application in one place.
 
-<walkthrough-project-billing-setup></walkthrough-project-billing-setup>
-<walkthrough-project-permissions permissions="dataflow.jobs.create"></walkthrough-project-permissions>
+<walkthrough-project-billing-setup permissions="dataflow.jobs.create"></walkthrough-project-billing-setup>
 
 ## Set up Cloud Dataflow
 

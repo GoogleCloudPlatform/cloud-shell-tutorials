@@ -1,10 +1,7 @@
 # Introduction to Cloud IoT Core
 
-<walkthrough-test-start-page url="/start?tutorial=iot_core_quickstart"/>
-
-<walkthrough-tutorial-url url="https://cloud.google.com/iot/docs/quickstart"/>
-
-<walkthrough-watcher-constant key="repo-url" value="https://github.com/GoogleCloudPlatform/nodejs-docs-samples.git" />
+<walkthrough-tutorial-url url="https://cloud.google.com/iot/docs/quickstart"></walkthrough-tutorial-url>
+<walkthrough-watcher-constant key="repo-url" value="https://github.com/GoogleCloudPlatform/nodejs-docs-samples.git"></walkthrough-watcher-constant>
 
 ## Introduction
 
@@ -16,19 +13,19 @@ sample to connect a device and publish device telemetry events.
 
 This tutorial will walk you through:
 
--   Creating a Cloud Pub/Sub topic
--   Creating a device registry
--   Adding a device to the registry
--   Setting up credentials on the device
--   Creating a subscription to the Pub/Sub topic to send and receive messages
--   Connecting a virtual device and viewing telemetry data
+  *  Creating a Cloud Pub/Sub topic
+  *  Creating a device registry
+  *  Adding a device to the registry
+  *  Setting up credentials on the device
+  *  Creating a subscription to the Pub/Sub topic to send and receive messages
+  *  Connecting a virtual device and viewing telemetry data
 
 ## Project setup
 
 Google Cloud Platform organizes resources into projects. This allows you to
 collect all the related resources for a single application in one place.
 
-<walkthrough-project-billing-setup/>
+<walkthrough-project-billing-setup></walkthrough-project-billing-setup>
 
 ## Using Google Cloud Shell
 
@@ -36,15 +33,15 @@ In this tutorial, you will do all of your work in the Cloud Shell.
 
 ### Open Google Cloud Shell
 
-Open Cloud Shell by clicking the <walkthrough-cloud-shell-icon/>
-[icon](walkthrough://spotlight-pointer?spotlightId=devshell-activate-button) in
-the navigation bar at the top of the console.
+Open Cloud Shell by clicking
+<walkthrough-cloud-shell-icon></walkthrough-cloud-shell-icon>
+[icon][spotlight-open-devshell] in the navigation bar at the top of the console.
 
 ### Turn on Google Cloud APIs
 
 This will enable the Cloud IoT Core API.
 
-<walkthrough-enable-apis apis="cloudiot.googleapis.com"/>
+<walkthrough-enable-apis apis="cloudiot.googleapis.com"></walkthrough-enable-apis>
 
 ## Create your first topic
 
@@ -57,19 +54,6 @@ gcloud pubsub topics create my-topic
 
 You will send several messages to this topic later.
 
-## Create a subscription to the device's topic
-
-Run the following command to create a subscription, which allows you to view the
-messages published by your device:
-
-```bash
-gcloud pubsub subscriptions create \
-    projects/{{project-id}}/subscriptions/my-subscription \
-    --topic=my-topic
-```
-
-<walkthrough-test-code-output text="Created subscription|Failed to create subscription" />
-
 ## Clone the Cloud IoT Core Node.js sample files from GitHub
 
 You'll use the MQTT sample to send messages to Cloud IoT Core.
@@ -77,7 +61,7 @@ You'll use the MQTT sample to send messages to Cloud IoT Core.
 Note: If the directory already exists, remove the previous files before cloning:
 
 ```bash
-rm -rf {{repo-name}}
+rm -rf nodejs-docs-samples
 ```
 
 Clone the sample program with the following command:
@@ -92,10 +76,10 @@ Using the helper script in the `/iot/scripts` folder, add the
 `cloud-iot@system.gserviceaccount.com` service account to the Cloud Pub/Sub
 topic with the Publisher role.
 
-### Navigate to the iot/ directory:
+### Navigate to the iot directory:
 
 ```bash
-cd nodejs-docs-samples/iot/
+cd nodejs-docs-samples/iot
 ```
 
 ### Install the dependencies:
@@ -103,8 +87,6 @@ cd nodejs-docs-samples/iot/
 ```bash
 npm --prefix ./scripts install
 ```
-
-<walkthrough-test-code-output text="node scripts/postinstall" />
 
 ### Run the helper script:
 
@@ -127,8 +109,6 @@ gcloud iot registries create my-registry \
     --event-notification-config=topic=projects/{{project-id}}/topics/my-topic
 ```
 
-<walkthrough-test-code-output text="Created registry|ALREADY_EXISTS" />
-
 ## Generate your signing keys
 
 To authenticate to Cloud IoT core, a device needs a private key and a public
@@ -141,7 +121,7 @@ key. Generate your signing keys by running the following command:
 This script creates RS256 and ES256 keys in PEM format, but you'll only need the
 RS256 keys for this tutorial. The private key must be securely stored on the
 device and is used to sign the authentication JWT ([JSON Web
-Token](https://cloud.google.com/iot/docs/how-tos/credentials/jwts)). The public
+Token][web-token-docs]). The public
 key is stored in the device registry.
 
 ## Create a device and add it to the registry
@@ -150,13 +130,11 @@ Run the following command to create a device and add it to the registry:
 
 ```bash
 gcloud iot devices create my-node-device \
-    --project={{{project-id}}} \
+    --project={{project-id}} \
     --region=us-central1 \
     --registry=my-registry \
     --public-key path=rsa_cert.pem,type=rs256
 ```
-
-<walkthrough-test-code-output text="Created device|ALREADY_EXISTS" />
 
 ## Connect your device and view telemetry data
 
@@ -184,11 +162,23 @@ node cloudiot_mqtt_example_nodejs.js \
     --deviceId=my-node-device \
     --privateKeyFile=../rsa_private.pem \
     --numMessages=25 \
-    --algorithm=RS256
+    --algorithm=RS256 \
+    --mqttBridgePort=443
 ```
 
 The output shows that the virtual device is publishing messages to the telemetry
 topic. Twenty-five messages are published.
+
+## Create a subscription to the device's topic
+
+Run the following command to create a subscription, which allows you to view the
+messages published by your device:
+
+```bash
+gcloud pubsub subscriptions create \
+    projects/{{project-id}}/subscriptions/my-subscription \
+    --topic=my-topic
+```
 
 ## Pull published messages
 
@@ -200,7 +190,7 @@ gcloud pubsub subscriptions pull --auto-ack \
 ```
 
 Running this command returns the messages published by the device. The messages
-have the following data, `my-registry/my-node-device-payload-<INTEGER>`, a
+have the following data, `my-registry/my-node-device-payload-&lt;INTEGER&gt;`, a
 `MESSAGE_ID`, and an `ATTRIBUTES` list of information about the device. The
 `MESSAGE_ID` is a unique ID assigned by the server.
 
@@ -213,18 +203,17 @@ running the same command several times until you see the other messages.
 This concludes the `gcloud` command line tutorial, but you can also use the GCP
 Console to view the resources you just created.
 
-Open the [menu](walkthrough://spotlight-pointer?spotlightId=console-nav-menu) on
-the left side of the console.
+Open the [menu][spotlight-console-menu] on the left side of the console.
 
 Then select **IoT Core**.
 
-<walkthrough-menu-navigation sectionId="IOT_SECTION"/>
+<walkthrough-menu-navigation sectionId="IOT_SECTION"></walkthrough-menu-navigation>
 
 The UI also lets you to create and manage device registries and devices.
 
 ## Conclusion
 
-<walkthrough-conclusion-trophy/>
+<walkthrough-conclusion-trophy></walkthrough-conclusion-trophy>
 
 Congratulations! You just walked through the basic concepts of Cloud IoT Core
 using the `gcloud` command line tool, and you used the GCP Console to view Cloud
@@ -235,7 +224,11 @@ information, see [IoT Core documentation](https://cloud.google.com/iot/docs/).
 
 View more Cloud IoT Core samples on GitHub:
 
--   [C](https://github.com/GoogleCloudPlatform/cpp-docs-samples/tree/master/iot/mqtt-ciotc)
--   [Java](https://github.com/GoogleCloudPlatform/java-docs-samples/tree/master/iot/api-client)
--   [Node.js](https://github.com/GoogleCloudPlatform/nodejs-docs-samples/tree/master/iot)
--   [Python](https://github.com/GoogleCloudPlatform/python-docs-samples/tree/master/iot/api-client)
+  *  [C](https://github.com/GoogleCloudPlatform/cpp-docs-samples/tree/master/iot/mqtt-ciotc)
+  *  [Java](https://github.com/GoogleCloudPlatform/java-docs-samples/tree/master/iot/api-client)
+  *  [Node.js](https://github.com/GoogleCloudPlatform/nodejs-docs-samples/tree/master/iot)
+  *  [Python](https://github.com/GoogleCloudPlatform/python-docs-samples/tree/master/iot/api-client)
+
+[spotlight-console-menu]: walkthrough://spotlight-pointer?spotlightId=console-nav-menu
+[spotlight-open-devshell]: walkthrough://spotlight-pointer?spotlightId=devshell-activate-button
+[web-token-docs]: https://cloud.google.com/iot/docs/how-tos/credentials/jwts

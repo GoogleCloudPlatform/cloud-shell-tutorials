@@ -208,10 +208,10 @@ To learn more, visit the Cloud TPU documentation site:
 
 [https://cloud.google.com/tpu/][tpu-docs]
 
-[tpu-docs]: https://cloud.google.com/tpu/docs/
-[tensor-flow]: https://www.tensorflow.org/
 [request-tpu-quota]: https://services.google.com/fb/forms/cloud-tpu-beta-request/
-[spotlight-open-devshell]: walkthrough://spotlight-pointer?spotlightId=devshell-activate-button
-[tpu-regions]: https://cloud.google.com/tpu/docs/regions
 [spotlight-network-peering]: walkthrough://spotlight-pointer?cssSelector=#cfctest-section-nav-item-peering_list
+[spotlight-open-devshell]: walkthrough://spotlight-pointer?spotlightId=devshell-activate-button
 [spotlight-routes-list]: walkthrough://spotlight-pointer?cssSelector=#cfctest-section-nav-item-routes_list
+[tensor-flow]: https://www.tensorflow.org/
+[tpu-docs]: https://cloud.google.com/tpu/docs/
+[tpu-regions]: https://cloud.google.com/tpu/docs/regions

@@ -16,7 +16,7 @@ see [Managing Instance Access using OS Login][managing-instance-access].
 
 You can connect to Linux instances through either the GCP Console or the
 [`gcloud` command-line tool][gcloud-compute].
-Compute Engine generates generates an SSH key for you and stores
+Compute Engine generates an SSH key for you and stores
 it in one of the following locations:
 
 + By default, Compute Engine adds the generated key to
@@ -36,8 +36,6 @@ After you connect, you can use the terminal to run commands on your Linux
 instance. When you are done, use the `exit` command to disconnect from the
 instance.
 
-![][establish-ssh-connection-png]
-
 ### Using glcoud SDK
 
 Use the [`gcloud compute ssh`][gcloud-reference-compute-ssh] command to connect to instances that you have permission to access:
@@ -52,5 +50,4 @@ Use the [`gcloud compute ssh`][gcloud-reference-compute-ssh] command to connect 
 [storing-retrieving-metadata]: https://cloud.google.com/compute/docs/storing-retrieving-metadata
 [gcloud-compute]: https://cloud.google.com/compute/docs/gcloud-compute/
 [gcloud-reference-compute-ssh]: https://cloud.google.com/sdk/gcloud/reference/compute/ssh
-[establish-ssh-connection-png]: https://cloud.google.com/docs/images/establish-ssh-connection-1.png
 [connecting-to-instance-windows]: https://cloud.google.com/compute/docs/instances/connecting-to-instance

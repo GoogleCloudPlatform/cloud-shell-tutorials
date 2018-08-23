@@ -6,6 +6,8 @@
 
 <walkthrough-watcher-constant key="repo-url" value="https://github.com/GoogleCloudPlatform/nodejs-docs-samples.git" />
 
+<walkthrough-watcher-constant key="repo-name" value="nodejs-docs-samples" />
+
 ## Introduction
 
 Google Cloud Internet of Things (IoT) Core is a fully managed service for
@@ -150,7 +152,7 @@ Run the following command to create a device and add it to the registry:
 
 ```bash
 gcloud iot devices create my-node-device \
-    --project={{{project-id}}} \
+    --project={{project-id}} \
     --region=us-central1 \
     --registry=my-registry \
     --public-key path=rsa_cert.pem,type=rs256
@@ -184,7 +186,8 @@ node cloudiot_mqtt_example_nodejs.js \
     --deviceId=my-node-device \
     --privateKeyFile=../rsa_private.pem \
     --numMessages=25 \
-    --algorithm=RS256
+    --algorithm=RS256 \
+    --mqttBridgePort=443
 ```
 
 The output shows that the virtual device is publishing messages to the telemetry

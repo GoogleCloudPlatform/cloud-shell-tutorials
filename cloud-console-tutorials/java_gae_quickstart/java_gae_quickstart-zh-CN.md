@@ -184,7 +184,7 @@ Cloud Datastore 是一个适用于您应用的高度可扩展的 NoSQL 数据库
 </walkthrough-tutorial-card>
 
 <walkthrough-tutorial-card
-  url="appengine/docs/go/googlecloudstorageclient/setting-up-cloud-storage/"
+  url="appengine/docs/java/googlecloudstorageclient/setting-up-cloud-storage/"
   icon="STORAGE_SECTION"
   label="cloudStorage">
 **了解如何使用 Cloud Storage**

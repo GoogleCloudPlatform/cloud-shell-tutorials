@@ -190,7 +190,7 @@ Cloud Datastore はアプリケーション向けの拡張性の高い NoSQL デ
 </walkthrough-tutorial-card>
 
 <walkthrough-tutorial-card
-  url="appengine/docs/go/googlecloudstorageclient/setting-up-cloud-storage/"
+  url="appengine/docs/java/googlecloudstorageclient/setting-up-cloud-storage/"
   icon="STORAGE_SECTION"
   label="cloudStorage">
 **Cloud Storage の使用方法**

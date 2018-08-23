@@ -1,9 +1,7 @@
 # App Engine Quickstart
 
-<walkthrough-test-start-page url="/getting-started?tutorial=python_gae_quickstart_v2"></walkthrough-test-start-page>
 <walkthrough-tutorial-url url="https://cloud.google.com/appengine/docs/python/quickstart"></walkthrough-tutorial-url>
 <walkthrough-watcher-constant key="repo-url" value="https://github.com/GoogleCloudPlatform/python-docs-samples"></walkthrough-watcher-constant>
-<walkthrough-watcher-constant key="repo-name" value="python-docs-samples"></walkthrough-watcher-constant>
 <walkthrough-watcher-constant key="repo-dir" value="python-docs-samples/appengine/standard/hello_world"></walkthrough-watcher-constant>
 
 ## Introduction
@@ -13,21 +11,21 @@ application to Google App Engine using the `gcloud` command.
 
 Here are the steps you will be taking.
 
-*   **Create a project**
+  *  **Create a project**
 
-    Projects bundle code, VMs, and other resources together for easier
-    development and monitoring.
+     Projects bundle code, VMs, and other resources together for easier
+development and monitoring.
 
-*   **Build and run your "Hello, world!" app**
+  *  **Build and run your "Hello, world!" app**
 
-    You will learn how to run your app using Google Cloud Shell, right in your
-    browser. At the end you'll deploy your app to the web using the `gcloud`
-    command.
+     You will learn how to run your app using Google Cloud Shell, right in your
+browser. At the end you'll deploy your app to the web using the `gcloud`
+command.
 
-*   **After the tutorial...**
+  *  **After the tutorial...**
 
-    Your app will be real and you'll be able to experiment with it after you
-    deploy, or you can remove it and start fresh.
+     Your app will be real and you'll be able to experiment with it after you
+deploy, or you can remove it and start fresh.
 
 ["Python" and the Python logos are trademarks or registered trademarks of the
 Python Software Foundation.](walkthrough://footnote)
@@ -59,11 +57,7 @@ Open Cloud Shell by clicking
 Use Cloud Shell to clone and navigate to the "Hello World" code. The sample code
 is cloned from your project repository to the Cloud Shell.
 
-Note: If the directory already exists, remove the previous files before cloning:
-
-```bash
-rm -rf {{repo-name}}
-```
+Note: If the directory already exists, remove the previous files before cloning.
 
 In Cloud Shell enter:
 
@@ -109,13 +103,13 @@ cat app.yaml
 From top to bottom, this configuration file says the following about this
 application:
 
-*   This code runs in the `python` runtime environment.
-*   This application is `threadsafe` so the same instance can handle several
-    simultaneous requests. Threadsafe is an advanced feature and can result in
-    erratic behavior if your application is not specifically designed to be
-    threadsafe.
-*   Every request to a URL whose path matches the regular expression `/.*` (all
-    URLs) should be handled by the app object in the `main` Python module.
+  *  This code runs in the `python` runtime environment.
+  *  This application is `threadsafe` so the same instance can handle several
+     simultaneous requests. Threadsafe is an advanced feature and can result in
+     erratic behavior if your application is not specifically designed to be
+     threadsafe.
+  *  Every request to a URL whose path matches the regular expression `/.*` (all
+     URLs) should be handled by the app object in the `main` Python module.
 
 The syntax of this file is [YAML](http://www.yaml.org). For a complete list of
 configuration options, see the [`app.yaml`][app-yaml-reference] reference.
@@ -197,16 +191,20 @@ Install the [Google Cloud SDK][cloud-sdk-installer] on your local machine.
 
 Learn how to use App Engine with other Google Cloud Platform products:
 
-<walkthrough-tutorial-card url="python/django/appengine" icon="APPENGINE_SECTION" label="django">
-**Run Django** Develop Django apps running on App Engine.
+<walkthrough-tutorial-card url="python/django/appengine"
+  icon="APPENGINE_SECTION" label="django">
+  **Run Django**
+  Develop Django apps running on App Engine.
 </walkthrough-tutorial-card>
 
-<walkthrough-tutorial-card url="appengine/docs/python/datastore/" icon="DATASTORE_SECTION" label="datastore">
-**Learn to use Cloud Datastore** Cloud Datastore is a highly-scalable NoSQL
-database for your applications. </walkthrough-tutorial-card>
+<walkthrough-tutorial-card url="appengine/docs/python/datastore/"
+  icon="DATASTORE_SECTION" label="datastore">
+  **Learn to use Cloud Datastore**
+  Cloud Datastore is a highly-scalable NoSQL database for your applications.
+</walkthrough-tutorial-card>
 
+[app-yaml-reference]: https://cloud.google.com/appengine/docs/standard/python/config/appref
+[cloud-sdk-installer]: https://cloud.google.com/sdk/downloads#interactive
 [spotlight-console-menu]: walkthrough://spotlight-pointer?spotlightId=console-nav-menu
 [spotlight-open-devshell]: walkthrough://spotlight-pointer?spotlightId=devshell-activate-button
-[app-yaml-reference]: https://cloud.google.com/appengine/docs/standard/python/config/appref
 [spotlight-web-preview]: walkthrough://spotlight-pointer?spotlightId=devshell-web-preview-button
-[cloud-sdk-installer]: https://cloud.google.com/sdk/downloads#interactive

@@ -66,16 +66,16 @@ mvn archetype:generate \
     -DarchetypeVersion=2.1.0 \
     -DgroupId=com.example \
     -DartifactId={{directory}} \
-    -Dversion="0.1" \
+    -Dversion=&quot;0.1&quot; \
     -DinteractiveMode=false \
     -Dpackage=com.example
 ```
 
-*   `archetypeArtifactId` and `archetypeGroupId` are used to define the example
+  *  `archetypeArtifactId` and `archetypeGroupId` are used to define the example
     project structure.
-*   `groupId` is your organization's Java package name prefix; for example,
+  *  `groupId` is your organization's Java package name prefix; for example,
     `com.mycompany`
-*   `artifactId` sets the name of the created jar file. Use the default value
+  *  `artifactId` sets the name of the created jar file. Use the default value
     (`{{directory}}`) for the purpose of this tutorial.
 
 Run the Maven command in Cloud Shell.
@@ -125,17 +125,17 @@ The running pipeline is referred to as a *job.*
 ```bash
 mvn compile exec:java \
   -Dexec.mainClass=com.example.WordCount \
-  -Dexec.args="--project={{project-id}} \
+  -Dexec.args=&quot;--project={{project-id}} \
   --stagingLocation=gs://{{project-id-no-domain}}/staging/ \
   --output=gs://{{project-id-no-domain}}/output \
   --runner=DataflowRunner \
-  --jobName={{job-name}}"
+  --jobName={{job-name}}&quot;
 ```
 
-*   `stagingLocation` is the storage bucket Cloud Dataflow will use for the
+  *  `stagingLocation` is the storage bucket Cloud Dataflow will use for the
     binaries and other data for running your pipeline. This location can be
     shared across multiple jobs.
-*   `output` is the bucket used by the WordCount example to store the job
+  *  `output` is the bucket used by the WordCount example to store the job
     results.
 
 ### Your job is running
@@ -218,24 +218,24 @@ Click [Delete][spotlight-delete-bucket] and confirm your deletion.
 
 Here's what you can do next:
 
-*   [Read more about the Word Count example][wordcount]
-*   [Learn about the Cloud Dataflow programming model][df-model]
-*   [Explore the Cloud Dataflow SDK on GitHub][df-sdk]
+  *  [Read more about the Word Count example][wordcount]
+  *  [Learn about the Cloud Dataflow programming model][df-model]
+  *  [Explore the Cloud Dataflow SDK on GitHub][df-sdk]
 
 Set up your local environment:
 
-*   [Use Eclipse to run Dataflow][df-eclipse]
-*   [Use Python to run Dataflow][df-python]
+  *  [Use Eclipse to run Dataflow][df-eclipse]
+  *  [Use Python to run Dataflow][df-python]
 
 [dataflow-java-tutorial]: https://cloud.google.com/dataflow/docs/quickstarts/quickstart-java-maven
 [df-eclipse]: https://cloud.google.com/dataflow/docs/quickstarts/quickstart-java-eclipse
-[df-python]: https://cloud.google.com/dataflow/docs/quickstarts/quickstart-python
 [df-model]: https://cloud.google.com/dataflow/model/programming-model-beam
+[df-python]: https://cloud.google.com/dataflow/docs/quickstarts/quickstart-python
 [df-sdk]: https://github.com/apache/beam/tree/master/sdks/java
-[wordcount]: https://beam.apache.org/get-started/wordcount-example/
 [gsutil-docs]: https://cloud.google.com/storage/docs/gsutil
-[spotlight-job-logs]: walkthrough://spotlight-pointer?cssSelector=#p6n-dax-job-logs-toggle
 [spotlight-buckets-link]: walkthrough://spotlight-pointer?cssSelector=.p6n-cloudstorage-path-link
-[spotlight-delete-bucket]: walkthrough://spotlight-pointer?cssSelector=#p6n-cloudstorage-delete-buckets
 [spotlight-console-menu]: walkthrough://spotlight-pointer?spotlightId=console-nav-menu
+[spotlight-delete-bucket]: walkthrough://spotlight-pointer?cssSelector=#p6n-cloudstorage-delete-buckets
+[spotlight-job-logs]: walkthrough://spotlight-pointer?cssSelector=#p6n-dax-job-logs-toggle
 [spotlight-open-devshell]: walkthrough://spotlight-pointer?spotlightId=devshell-activate-button
+[wordcount]: https://beam.apache.org/get-started/wordcount-example/

@@ -4,7 +4,7 @@
 
 Open the add member dialog by clicking the
 <walkthrough-spotlight-pointer spotlightId="iam-add-member">
-add button
+  add button
 </walkthrough-spotlight-pointer> from the IAM
 bar above.
 
@@ -38,11 +38,12 @@ resources, except for firewall rules and SSL certificates.
 Permissions to create, modify, and delete firewall rules
 and SSL certificates.
 
-
 ## Continue setting up your Organization
 
-You should now have a good feel for setting up your organization's IAM roles.
-You can continue your organization set-up process by navigating to the
-**"Identity & Organization"** page in the **"IAM & admin"** section.
+You should now have a good feel for setting up your
+organization's IAM roles. You can continue your
+organization set-up process by navigating to the
+"Identity" page in the "IAM & admin" section.
 
-<walkthrough-menu-navigation sectionId="IAM_ADMIN_SECTION"/>
+<walkthrough-menu-navigation sectionId="IAM_ADMIN_SECTION"></walkthrough-menu-navigation>
+

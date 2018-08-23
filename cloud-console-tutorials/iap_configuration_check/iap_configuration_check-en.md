@@ -27,9 +27,9 @@ Google to continously monitor project configuration and send notifications.
 [Learn how](https://cloud.google.com/iap/docs/signed-headers-howto) to protect
 your app from IAP access policy bypass, such as:
 
-*   A project admin accedentially disabling IAP
-*   Network configuration errors
-*   A user logging into the VM and connecting to the webserver via localhost
+  *  A project admin accedentially disabling IAP
+  *  Network configuration errors
+  *  A user logging into the VM and connecting to the webserver via localhost
 
 ### Assert configuration
 

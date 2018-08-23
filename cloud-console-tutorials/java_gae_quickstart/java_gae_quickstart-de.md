@@ -206,7 +206,7 @@ Cloud Datastore ist eine hoch skalierbare NoSQL-Datenbank für Ihre Anwendungen.
 </walkthrough-tutorial-card>
 
 <walkthrough-tutorial-card
-  url="appengine/docs/go/googlecloudstorageclient/setting-up-cloud-storage/"
+  url="appengine/docs/java/googlecloudstorageclient/setting-up-cloud-storage/"
   icon="STORAGE_SECTION"
   label="cloudStorage">
 **Verwendung von Cloud Storage erlernen**

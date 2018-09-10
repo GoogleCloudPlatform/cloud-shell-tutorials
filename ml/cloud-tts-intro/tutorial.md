@@ -16,6 +16,8 @@ What you'll learn:
 * Creating a Text-to-Speech API request and calling the API with curl, providing both text and  [SSML](https://cloud.google.com/text-to-speech/docs/ssml)
 * Configuring the setting for audio output, including specifying a device profile for audio playback
 
+![Text-to-speech API graphic](https://cloud.google.com/images/products/text-to-speech/high-fidelity.svg)
+
 **Time to complete**: About 30 minutes
 
 Click the **Continue** button to move to the next step.

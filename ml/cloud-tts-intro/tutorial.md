@@ -30,11 +30,9 @@ If you don't have a Google Cloud Platform (GCP) project yet, create one [here](h
 
 ### Set your Project ID in your shell environment
 
-On the [Cloud Console](https://console.cloud.google.com/), find your Project ID in the area highlighted below:
+In the [Cloud Console](https://console.cloud.google.com/), under the "Project Info" in the Home view, find your Project ID.
 
-![project-id](https://storage.googleapis.com/mco-tutorials/project-id.png)
-
-Save your project Id in an environment variable, which you'll use in subsequent steps.
+In the Cloud Shell, save your project ID in an environment variable, which you'll use in subsequent steps.
 ```bash
   export PROJECT=<your-project-id>
 ```
@@ -45,68 +43,39 @@ Now run the following command to ensure that the Cloud Shell is using the correc
   gcloud config set project $PROJECT
 ```
 
-<!-- ### Create and store an API Key
-
-We'll be using curl to send a request to the Text-to-Speech API, and we'll need to generate an API key to pass in our request URL.
-
-> **Note**: If you've already created an API key in this project during one of the other Cloud Shell tutorials, you can just use the existing key— you don't need to create another one.  Just be sure to set the `API_KEY` environment variable with your existing key as described below.
-
-To create an API key, navigate to:
-
-**APIs & services > Credentials** in the [Cloud Console](https://console.cloud.google.com/):
-
-![apis_and_services](https://storage.googleapis.com/aju-dev-demos-codelabs/images/apis_and_services.png)
-
-Then click __Create credentials__:
-
-![create_credentials1](https://storage.googleapis.com/aju-dev-demos-codelabs/images/create_credentials1.png)
-
-In the drop-down menu, select __API key__:
-
-![create_credentials2](https://storage.googleapis.com/aju-dev-demos-codelabs/images/create_credentials2.png)
-
-Next, copy the key you just generated. Click __Close__.
-
-Now that you have an API key, save it to an environment variable to avoid having to insert the value of your API key in each request. You can do this in Cloud Shell. Be sure to replace `<your_api_key>` with the key you just copied.
-
-```bash
-export API_KEY=<YOUR_API_KEY>
-``` -->
-
-
 Next, you'll enable the Text-to-Speech API for your project, if you've not already done so.
 
-## Enable the Cloud Text-to-Speech API
+### Enable the Cloud Text-to-Speech API
 
 Click on [this link](https://pantheon.corp.google.com/flows/enableapi?apiid=texttospeech.googleapis.com) to enable the Text-to-Speech API for your project, if you haven't already done so. Select your project from the pull-down menu (you may need to search for it by name) and then click the 'continue' button.
 
 After you've enabled it, just return to this window. 
 
-Next, you'll create a service account to authenticate with the Text-to-Speech API
+Next, you'll create a service account to authenticate with the Text-to-Speech API.
 
 ## Create a service account to authenticate with the Text-to-Speech API
 
 You'll use a *service account* to authenticate your calls to the Text-to-Speech API. To create a service account, run the following command in Cloud Shell.
 
-```
+```bash
 gcloud iam service-accounts create tts-codelab
 ```
 
-For this next step, you need to copy the name of your Google Cloud project. Run the following command and copy the output.
+<!-- For this next step, you need to copy the name of your Google Cloud project. Run the following command and copy the output.
 
-```
+```bash
 gcloud config get-value project 2> /dev/null
-```
+``` -->
 
-Now you need to generate a key to use that service account. To create and download a key, run the following command in Cloud Shell, replacing `PROJECT_ID` with the ID of your Google Cloud project (that you copied in the previous step).
+Now you need to generate a key to use that service account. To create and download a key, run the following command in Cloud Shell. (This command requires that you've set your `$PROJECT` environment variable as described in a previous step).
 
-```
-gcloud iam service-accounts keys create tts-codelab.json --iam-account tts-codelab@[PROJECT_ID].iam.gserviceaccount.com
+```bash
+gcloud iam service-accounts keys create tts-codelab.json --iam-account tts-codelab@@$PROJECT.iam.gserviceaccount.com
 ```
 
 Finally, set the `GOOGLE_APPLICATION_CREDENTIALS` environment variable to the location of your key file.
 
-```
+```bash
 export GOOGLE_APPLICATION_CREDENTIALS=tts-codelab.json
 ```
 
@@ -182,9 +151,8 @@ In the next step, you'll do some actual speech generation.
 
 Now that you've seen how to get the names of voices to speak your text, it's time to create some synthetic speech! 
 
-Bring up the `synthesize-text.json` file
+Bring up the `synthesize-text.json` file 
 <walkthrough-editor-open-file filePath="cloud-shell-tutorials/ml/cloud-tts-intro/synthesize-text.json">in the text editor.</walkthrough-editor-open-file>
-
 It should look like this:
 
 ```json
@@ -222,9 +190,15 @@ curl -H "Authorization: Bearer "$(gcloud auth application-default print-access-t
   > synthesize-text.txt
 ```
 
-Open the  `synthesize-text.txt` file. You'll notice that the Text-to-Speech API provides the audio output in base64-encoded text assigned to the `audioContent` field, similar to what's shown below.
+Open the  `synthesize-text.txt` file in the text editor, or in the Cloud Shell run:
 
+```bash
+more synthesize-text.txt
 ```
+
+You'll notice that the Text-to-Speech API provides the audio output in base64-encoded text assigned to the `audioContent` field, similar to what's shown below.
+
+```json
 {
   "audioContent": "//NExAASGoHwABhGudEACdzqFXfRE4EY3AACkD/zX4ADf/6J/[...]"
 }
@@ -232,9 +206,8 @@ Open the  `synthesize-text.txt` file. You'll notice that the Text-to-Speech API 
 
 To translate the response into audio, you need to select the audio data it contains and decode it into an audio file (MP3, in this case). Although there are many ways that you can do this, in this codelab we'll use some really simple Python code. Don't worry if you're not a Python expert; you need only create the file and invoke it from the command line.
 
-Bring up the `tts_decode.py` file
+Bring up the `tts_decode.py` file 
 <walkthrough-editor-open-file filePath="cloud-shell-tutorials/ml/cloud-tts-intro/tts_decode.py">in the text editor.</walkthrough-editor-open-file>
-
 It should look like this:
 
 ```py
@@ -281,7 +254,7 @@ if __name__ == '__main__':
 
 Now, to create an audio file from the response you received from the Text-to-Speech API, run the following command from Cloud Shell. This creates a new MP3 file named `synthesize-text-audio.mp3`.
 
-```
+```bash
 python tts_decode.py --input "synthesize-text.txt" --output "synthesize-text-audio.mp3"
 ```
 
@@ -289,7 +262,6 @@ Of course, since the `synthesize-text-audio.mp3` lives in the cloud, you can't j
 
 Bring up the `index.html` file
 <walkthrough-editor-open-file filePath="cloud-shell-tutorials/ml/cloud-tts-intro/index.html">in the text editor.</walkthrough-editor-open-file>
-
 It should look like this:
 
 ```html
@@ -312,7 +284,7 @@ Next, start a simple Python HTTP server from the Cloud Shell command prompt:
 python -m SimpleHTTPServer 8080
 ```
 
-Finally, click the **Web Preview** button ![web preview icon](https://storage.googleapis.com/aju-dev-demos-codelabs/images/web_preview_icon.png) and then select the port number from the displayed menu. In the new browser window, you should see something like the following:
+Finally, click the **Web Preview** button ![web preview icon](https://storage.googleapis.com/aju-dev-demos-codelabs/images/web_preview_icon.png) and then select the port number (8080) from the displayed menu. In a new browser window, you should see something like the following:
 
 ![tts output](https://storage.googleapis.com/aju-dev-demos-codelabs/images/tts_browser1.png)
 
@@ -373,11 +345,11 @@ Specifically, the elements in this sample have the following effects:
 * `<sub>` specifies a substitution value to speak for the enclosed text.   
 
 
-> **Note**: You can see the full list of SSML elements supported by Cloud Text-to-Speech by reviewing the  [SSML reference](https://cloud.google.com/text-to-speech/docs/ssml).
+> **Note**: You can see the full list of SSML elements supported by Cloud Text-to-Speech by reviewing the [SSML reference](https://cloud.google.com/text-to-speech/docs/ssml).
 
 Use the following code to call the Text-to-Speech API, which saves the output to a file called `synthesize-ssml.txt`.
 
-```
+```bash
 curl -H "Authorization: Bearer "$(gcloud auth application-default print-access-token) \
   -H "Content-Type: application/json; charset=utf-8" \
   -d @synthesize-ssml.json "https://texttospeech.googleapis.com/v1/text:synthesize" \
@@ -386,7 +358,7 @@ curl -H "Authorization: Bearer "$(gcloud auth application-default print-access-t
 
 Again, you need to decode the output from the Text-to-Speech API before you can hear the audio. Run the following command to generate an audio file named `synthesize-ssml-audio.mp3` using the `tts_decode.py` utility that you created previously.
 
-```
+```bash
 python tts_decode.py --input "synthesize-ssml.txt" --output "synthesize-ssml-audio.mp3"
 ```
 
@@ -416,11 +388,11 @@ Edit the file to replace the contents of the file with the following HTML, then 
 
 Then, start a simple Python HTTP server from the Cloud Shell command prompt.
 
-```
+```bash
 python -m SimpleHTTPServer 8080
 ```
 
-As before, click the **Web Preview** button ![web preview icon](https://storage.googleapis.com/aju-dev-demos-codelabs/images/web_preview_icon.png) and then select the port number from the displayed menu. In the new browser window, you should see something like the following:
+As before, click the **Web Preview** button ![web preview icon](https://storage.googleapis.com/aju-dev-demos-codelabs/images/web_preview_icon.png) and then select the 8080 port number from the displayed menu. In the new browser window, you should see something like the following:
 
 ![tts browser output](https://storage.googleapis.com/aju-dev-demos-codelabs/images/tts_browser_output.png)
 
@@ -478,7 +450,7 @@ curl -H "Authorization: Bearer "$(gcloud auth application-default print-access-t
   > synthesize-with-settings.txt
 ```
 
-Run the following command to generate an audio file named `synthesize-with-settings-audio.mp3` from the output received from the Text-to-Speech API.
+Run the following command to generate an audio file named `synthesize-with-settings-audio.ogg` from the output received from the Text-to-Speech API.
 
 ```bash
 python tts_decode.py --input "synthesize-with-settings.txt" --output "synthesize-with-settings-audio.ogg"
@@ -516,11 +488,11 @@ Edit the file to replace the contents of the file with the following HTML, then 
 
 Now, restart the Python HTTP server from the Cloud Shell command prompt.
 
-```
+```bash
 python -m SimpleHTTPServer 8080
 ```
 
-As before, click the **Web Preview** button ![web preview icon](https://storage.googleapis.com/aju-dev-demos-codelabs/images/web_preview_icon.png) and then select the port number from the displayed menu. In the new browser window, you should see something like the following:
+As before, click the **Web Preview** button ![web preview icon](https://storage.googleapis.com/aju-dev-demos-codelabs/images/web_preview_icon.png) and then select the correct port number from the displayed menu. In the new browser window, you should see something like the following:
 
 ![tts browser output](https://storage.googleapis.com/aju-dev-demos-codelabs/images/tts_browser3.png)
 
@@ -530,19 +502,19 @@ Play the third embedded audio file. Notice that the voice on the audio speaks a 
 
 <walkthrough-conclusion-trophy></walkthrough-conclusion-trophy>
 
-[![twitter-share](https://storage.googleapis.com/mco-tutorials/twitter2.png)](https://twitter.com/intent/tweet?text=I%20just%20learned%20how%20%20to%20use%20the%20Google%20Cloud%20Vision%20API%20-%20https://bit.ly/cloud-vision-tutorial%20%23GCP)
+[![twitter-share](https://storage.googleapis.com/mco-tutorials/twitter2.png)](https://twitter.com/intent/tweet?text=I%20just%20learned%20how%20%20to%20use%20the%20Google%20Cloud%20Text-to-Speech%20API%20-%20http://bit.ly/2CEzqZJ%20%23GCP)
 
 In this codelab, you learned how to create synthetic speech using the Cloud Text-to-Speech API.
 
 #### What we've covered
 
-* Listing all of the synthetic voices available through the Text-to-Speech API
-* Creating a Text-to-Speech API request and calling the API with curl, providing both text and  [SSML](https://cloud.google.com/text-to-speech/docs/ssml)
-* Configuring the setting for audio output, including specifying a device profile for audio playback
+* Listing all of the synthetic voices available through the Text-to-Speech API.
+* Creating a Text-to-Speech API request and calling the API with `curl`, providing both text and [SSML](https://cloud.google.com/text-to-speech/docs/ssml).
+* Configuring the settings for audio output, including specifying a device profile for audio playback.
 
 #### Next Steps
 
 * Check out the detailed documentation for the  [Text-to-Speech API on cloud.google.com.](https://cloud.google.com/text-to-speech/docs/)
-* Learn how to create synthetic speech  [using the client libraries for the Text-to-Speech API](https://cloud.google.com/text-to-speech/docs/quickstart-client-libraries).
+* Learn how to create synthetic speech [using the client libraries for the Text-to-Speech API](https://cloud.google.com/text-to-speech/docs/quickstart-client-libraries).
 
 

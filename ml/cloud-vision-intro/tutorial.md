@@ -76,7 +76,7 @@ Next, you'll enable the Vision API for your project, if you've not already done 
 
 ### Enable the Vision API
 
-Click on [this link](https://console.cloud.google.com/flows/enableapi?apiid=vision.googleapis.com) to enable the Vision API for your project, if you haven't already done so. Select your project from the pull-down menu (you may need to search for it by name) and then click the continue button.
+Click on [this link](https://console.cloud.google.com/flows/enableapi?apiid=vision.googleapis.com) to enable the Vision API for your project, if you haven't already done so. Select your project from the pull-down menu (you may need to search for it by name) and then click the 'continue' button.
 
 After you've enabled it, you don't need to do any further setup, as you've already set up an API key. Just return to this window.
 
@@ -90,7 +90,7 @@ We'll send a version of this image (of donuts) to the Vision API:
 ![donuts](https://storage.googleapis.com/aju-dev-demos-codelabs/images/vision_donuts_sm.jpeg)
 
 Bring up the `request.json` file
-<walkthrough-editor-open-file filePath="cloud-shell-tutorials/ml/cloud-vision-intro/request.json">in the text editor</walkthrough-editor-open-file>
+<walkthrough-editor-open-file filePath="cloud-shell-tutorials/ml/cloud-vision-intro/request.json">in the text editor.</walkthrough-editor-open-file>
 
 It should look like this:
 

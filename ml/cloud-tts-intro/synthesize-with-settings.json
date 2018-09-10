@@ -1,0 +1,19 @@
+{
+    'input':{
+        'text':'The Text-to-Speech API is ideal for any application
+          that plays audio of human speech to users. It allows you
+          to convert arbitrary strings, words, and sentences into
+          the sound of a person speaking the same things.'
+    },
+    'voice':{
+        'languageCode':'en-us',
+        'name':'en-GB-Standard-A',
+        'ssmlGender':'FEMALE'
+    },
+    'audioConfig':{
+      'speakingRate': 1.15,
+      'pitch': -2,
+      'audioEncoding':'OGG_OPUS',
+      'effectsProfileId': ['headphone-class-device']
+    }
+}

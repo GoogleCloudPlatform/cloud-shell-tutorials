@@ -31,7 +31,7 @@ c.NotebookApp.keyfile = u'/home/jupyter/nbkey.key'
 c.NotebookApp.allow_origin = '*'
 c.NotebookApp.ip = '*'
 c.NotebookApp.port = 8089
-c.NotebookApp.password = u'sha1:721564bd62b9:0e360213223406e735c176a72e0fda05404bb90e'
+c.NotebookApp.password = u'HASHED_PASSWD'
 JUPYTER_CONFIG
 
 chown jupyter -R /home/jupyter

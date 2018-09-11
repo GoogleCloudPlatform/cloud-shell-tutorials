@@ -33,7 +33,7 @@ On the [Cloud Console](https://console.cloud.google.com/), find your Project ID 
 
 ![project-id](https://storage.googleapis.com/mco-tutorials/project-id.png)
 
-Save your project Id in an environment variable, which you'll use in subsequent steps.
+In the Cloud Shell, save your project ID in an environment variable, which you'll use in subsequent steps.
 ```bash
   export PROJECT=<your-project-id>
 ```
@@ -76,7 +76,7 @@ Next, you'll enable the Vision API for your project, if you've not already done 
 
 ### Enable the Vision API
 
-Click on [this link](https://console.cloud.google.com/flows/enableapi?apiid=vision.googleapis.com) to enable the Vision API for your project, if you haven't already done so. Select your project from the pull-down menu (you may need to search for it by name) and then click the continue button.
+Click on [this link](https://console.cloud.google.com/flows/enableapi?apiid=vision.googleapis.com) to enable the Vision API for your project, if you haven't already done so. Select your project from the pull-down menu (you may need to search for it by name) and then click the 'continue' button.
 
 After you've enabled it, you don't need to do any further setup, as you've already set up an API key. Just return to this window.
 
@@ -90,7 +90,7 @@ We'll send a version of this image (of donuts) to the Vision API:
 ![donuts](https://storage.googleapis.com/aju-dev-demos-codelabs/images/vision_donuts_sm.jpeg)
 
 Bring up the `request.json` file
-<walkthrough-editor-open-file filePath="cloud-shell-tutorials/ml/cloud-vision-intro/request.json">in the text editor</walkthrough-editor-open-file>
+<walkthrough-editor-open-file filePath="cloud-shell-tutorials/ml/cloud-vision-intro/request.json">in the text editor.</walkthrough-editor-open-file>
 
 It should look like this:
 
@@ -417,7 +417,7 @@ We've looked at the Vision API's label, face, and landmark detection methods, bu
 
 <walkthrough-conclusion-trophy></walkthrough-conclusion-trophy>
 
-[![twitter-share](https://storage.googleapis.com/mco-tutorials/twitter2.png)](https://twitter.com/intent/tweet?text=I%20just%20learned%20how%20%20to%20use%20the%20Google%20Cloud%20Vision%20API%20-%20https://bit.ly/cloud-vision-tutorial%20%23GCP)
+[![twitter-share](https://storage.googleapis.com/mco-tutorials/twitter2.png)](https://twitter.com/intent/tweet?text=I%20just%20learned%20how%20%20to%20use%20the%20Google%20Cloud%20Vision%20API%20-%20http://bit.ly/2N5ev6W%20%23GCP)
 
 You've learned how to analyze images with the Vision API. In this example you passed the API the URLs of your images. Alternatively, you can pass a base64 encoded string of your image.
 
@@ -431,5 +431,3 @@ You've learned how to analyze images with the Vision API. In this example you pa
 * Check out the Vision API  [tutorials](https://cloud.google.com/vision/docs/tutorials) in the documentation
 * Find a  [Vision API sample](https://github.com/googlecloudplatform/cloud-vision) in your favorite language on GitHub
 * Try out the  [Speech API](https://codelabs.developers.google.com/codelabs/cloud-speech-intro/index.html?index=..%2F..%2Findex#0) and  [Natural Language API](https://codelabs.developers.google.com/codelabs/cloud-nl-intro) codelabs!
-
-

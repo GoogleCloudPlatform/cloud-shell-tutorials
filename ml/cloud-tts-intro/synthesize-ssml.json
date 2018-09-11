@@ -1,0 +1,27 @@
+{
+    'input':{
+        'ssml':'<speak><s>
+           <emphasis level="moderate">Cloud Text-to-Speech API</emphasis>
+           allows developers to include natural-sounding
+           <break strength="x-weak"/>
+           synthetic human speech as playable audio in their
+           applications.</s>
+           <s>The Text-to-Speech API converts text or
+           <prosody rate="slow">Speech Synthesis Markup Language</prosody>
+           <say-as interpret-as=\"characters\">SSML</say-as>
+           input into audio data
+           like <say-as interpret-as=\"characters\">MP3</say-as> or
+           <sub alias="linear sixteen">LINEAR16</sub>
+           <break strength="weak"/>
+           (the encoding used in
+           <sub alias="wave">WAV</sub> files).</s></speak>'
+    },
+    'voice':{
+        'languageCode':'en-gb',
+        'name':'en-GB-Standard-A',
+        'ssmlGender':'FEMALE'
+    },
+    'audioConfig':{
+        'audioEncoding':'MP3'
+    }
+}

@@ -9,7 +9,7 @@ This guide will show you how to build your own interactive tutorial (like this o
 
 **Time to complete**: About 10 minutes
 
-Click the **Continue** button to move to the next step.
+Click the **Forward** button to move to the next step.
 
 
 ## What is Cloud Shell?

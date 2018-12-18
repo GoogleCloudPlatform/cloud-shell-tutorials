@@ -1,4 +1,4 @@
-# Hello World! Introduction to Writing Tutorials in Cloud Shell
+# Introduction to Writing Tutorials in Cloud Shell
 
 
 ## Let's get started!

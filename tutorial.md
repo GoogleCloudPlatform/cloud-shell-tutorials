@@ -1,4 +1,4 @@
-# Introduction to Writing Tutorials in Cloud Shell
+# Hello World! Introduction to Writing Tutorials in Cloud Shell
 
 
 ## Let's get started!
@@ -9,7 +9,7 @@ This guide will show you how to build your own interactive tutorial (like this o
 
 **Time to complete**: About 10 minutes
 
-Click the **Continue** button to move to the next step.
+Click the **Next** button to move to the next step.
 
 
 ## What is Cloud Shell?
@@ -73,7 +73,7 @@ Next, add a step just after the title like this:
 
     ## Step 1
     This is a new step I’ve just added.
-Each 'step' of a tutorial is displayed on one page. To move through steps, users use the 'Back' and 'Continue/Forward' buttons.
+Each 'step' of a tutorial is displayed on one page. To move through steps, users use the 'Back' and 'Next' buttons.
 
 
 ### Add underlying items to a step

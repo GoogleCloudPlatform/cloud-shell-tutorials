@@ -1,8 +1,9 @@
 {
   "config": {
       "encoding":"FLAC",
-      "sample_rate": 16000,
-      "language_code": "en-US"
+      "sampleRateHertz": 16000,
+      "languageCode": "en-US",
+      "enableWordTimeOffsets": false
   },
   "audio": {
       "uri":"gs://cloud-samples-tests/speech/brooklyn.flac"

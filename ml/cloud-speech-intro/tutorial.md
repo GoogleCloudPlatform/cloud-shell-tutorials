@@ -90,8 +90,9 @@ It should look like this:
 {
   "config": {
       "encoding":"FLAC",
-      "sample_rate": 16000,
-      "language_code": "en-US"
+      "sampleRateHertz": 16000,
+      "languageCode": "en-US",
+      "enableWordTimeOffsets": false
   },
   "audio": {
       "uri":"gs://cloud-samples-tests/speech/brooklyn.flac"
@@ -113,7 +114,7 @@ You can now pass your request body, along with the API key environment variable 
 
 ```bash
 curl -s -X POST -H "Content-Type: application/json" --data-binary @request.json \
-"https://speech.googleapis.com/v1beta1/speech:syncrecognize?key=${API_KEY}"
+"https://speech.googleapis.com/v1/speech:recognize?key=${API_KEY}"
 ```
 
 Notice that the curl command used the API key that you generated.
@@ -137,7 +138,7 @@ Your response should look something like the following:
 
 The `transcript` value will return the Speech API's text transcription of your audio file, and the `confidence` value indicates how sure the API is that it has accurately transcribed your audio.
 
-You'll notice that we called the `syncrecognize` method in our request above. The Speech API supports both synchronous and asynchronous speech to text transcription. In this example we sent it a complete audio file, but you can also use the `syncrecognize` method to perform streaming speech to text transcription while the user is still speaking.
+<!-- You'll notice that we called the `syncrecognize` method in our request above. The Speech API supports both synchronous and asynchronous speech to text transcription. In this example we sent it a complete audio file, but you can also use the `syncrecognize` method to perform streaming speech to text transcription while the user is still speaking. -->
 
 
 ## Speech to text transcription in different languages
@@ -151,7 +152,7 @@ For example, if you had a Spanish audio file, you could set the `language_code` 
  {
   "config": {
       "encoding":"FLAC",
-      "sample_rate": 16000,
+      "sampleRateHertz": 16000,
       "language_code": "es-ES"
   },
   "audio": {

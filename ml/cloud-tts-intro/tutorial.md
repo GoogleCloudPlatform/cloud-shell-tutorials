@@ -49,7 +49,7 @@ Next, you'll enable the Text-to-Speech API for your project, if you've not alrea
 
 ### Enable the Cloud Text-to-Speech API
 
-Click on [this link](https://pantheon.corp.google.com/flows/enableapi?apiid=texttospeech.googleapis.com) to enable the Text-to-Speech API for your project, if you haven't already done so. Select your project from the pull-down menu (you may need to search for it by name) and then click the 'continue' button.
+Click on [this link](https://console.cloud.google.com/flows/enableapi?apiid=texttospeech.googleapis.com) to enable the Text-to-Speech API for your project, if you haven't already done so. Select your project from the pull-down menu (you may need to search for it by name) and then click the 'continue' button.
 
 After you've enabled it, just return to this window. 
 
@@ -72,7 +72,7 @@ gcloud config get-value project 2> /dev/null
 Now you need to generate a key to use that service account. To create and download a key, run the following command in Cloud Shell. (This command requires that you've set your `$PROJECT` environment variable as described in a previous step).
 
 ```bash
-gcloud iam service-accounts keys create tts-codelab.json --iam-account tts-codelab@@$PROJECT.iam.gserviceaccount.com
+gcloud iam service-accounts keys create tts-codelab.json --iam-account tts-codelab@$PROJECT.iam.gserviceaccount.com
 ```
 
 Finally, set the `GOOGLE_APPLICATION_CREDENTIALS` environment variable to the location of your key file.
@@ -282,13 +282,15 @@ It should look like this:
 
 Next, start a simple Python HTTP server from the Cloud Shell command prompt:
 
-```
+```bash
 python -m SimpleHTTPServer 8080
 ```
 
 Finally, click the **Web Preview** button ![web preview icon](https://storage.googleapis.com/aju-dev-demos-codelabs/images/web_preview_icon.png) and then select the port number (8080) from the displayed menu. In a new browser window, you should see something like the following:
 
 ![tts output](https://storage.googleapis.com/aju-dev-demos-codelabs/images/tts_browser1.png)
+
+**Note**: if you can't see the Web Preview icon, try scrolling the cloud shell pane horizontally to the left. It may be hiding behind the tutorial pane.
 
 Play the audio embedded on the page. You'll hear the synthetic voice speak the text that you provided to it!
 

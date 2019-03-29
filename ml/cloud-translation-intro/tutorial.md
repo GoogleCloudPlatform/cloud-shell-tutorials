@@ -70,10 +70,14 @@ Next, you'll translate some text from English to Spanish.
 
 ## Translate Text
 
-In this example you will translate the string "My name is Steve" into Spanish. Pass the text to be translated, along with the API key environment variable you saved earlier, to the Translation API with the following curl command:
+In this example you will translate the string "My name is Steve" into Spanish. Pass the text to be translated, along with the API key environment variable you saved earlier, to the Translation API with the following curl command. First set some text to translate by copying the following and pasting it into the Cloud Shell:
+
+```
+TEXT="My%20name%20is%20Steve"
+```
+then run the curl command:
 
 ```bash
-TEXT="My%20name%20is%20Steve"
 curl "https://translation.googleapis.com/language/translate/v2?target=es&key=${API_KEY}&q=${TEXT}"
 ```
 
@@ -97,11 +101,16 @@ In the response, you can see that the translated text as well as the source lang
 
 ## Detect Language
 
-In addition to translating text, the Translation API also lets you detect the language of text. In this example you will detect the language of two strings. Pass the text to be examined, along with the API key environment variable you saved earlier, to the Translation API with the following curl command:
+In addition to translating text, the Translation API also lets you detect the language of text. In this example you will detect the language of two strings. Pass the text to be examined, along with the API key environment variable you saved earlier, to the Translation API.
+
+First paste the following into the Cloud Shell window:
+
+```
+TEXT_ONE="Meu%20nome%20é%20Steven" ; TEXT_TWO="日本のグーグルのオフィスは、東京の六本木ヒルズにあります"
+```
+Then run the curl command:
 
 ```bash
-TEXT_ONE="Meu%20nome%20é%20Steven"
-TEXT_TWO="日本のグーグルのオフィスは、東京の六本木ヒルズにあります"
 curl "https://translation.googleapis.com/language/translate/v2/detect?key=${API_KEY}&q=${TEXT_ONE}&q=${TEXT_TWO}"
 ```
 

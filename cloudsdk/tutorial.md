@@ -20,7 +20,7 @@ gcloud projects create <ENTER-PROJECT-ID>
 
 **Tip**: Use `--help` with any gcloud command to bring up its documentation.
 
-Click the **Continue** button to move to the next step.
+Let's begin with the format flag. Click **Start**.
 
 ## What can the format flag do?
 

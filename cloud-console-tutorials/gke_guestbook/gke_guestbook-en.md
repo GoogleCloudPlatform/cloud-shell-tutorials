@@ -12,14 +12,14 @@ visitors to enter text in a log and to see the last few logged entries.
 
 The tutorial shows how to set up the guestbook web service on an external IP
 with a load balancer and how to run a [Redis][redis] cluster with a single
-master and multiple workers.
+leader and multiple workers.
 
 [Google Kubernetes Engine][gke-docs] is a powerful cluster manager and
 orchestration system built on the power of open source Kubernetes.
 
 To deploy and run the guestbook application on Kubernetes Engine, you must:
 
-1. Set up a Redis master
+1. Set up a Redis leader
 1. Set up Redis workers
 1. Set up the guestbook web frontend
 1. Visit the guestbook website
@@ -42,7 +42,7 @@ Then, select the **Kubernetes Engine** section.
 
 ## Create a Kubernetes cluster
 
-A cluster consists of at least one cluster master machine and multiple worker
+A cluster consists of at least one cluster leader machine and multiple worker
 machines called nodes. You deploy applications to clusters, and the applications
 run on the nodes.
 
@@ -79,7 +79,7 @@ git clone {{repo-url}}
 cd {{repo-dir}}
 ```
 
-## Set up a Redis master
+## Set up a Redis leader
 
 You are now in the main directory for the sample code. First, look at the files
 that configure your application.
@@ -95,48 +95,48 @@ gcloud container clusters get-credentials <cluster-name> --zone <cluster-zone>
 Enter the following command to view your controller configuration:
 
 ```bash
-cat redis-master-deployment.yaml
+cat redis-leader-deployment.yaml
 ```
 
-This file contains configuration to deploy a Redis master. The `spec` field
+This file contains configuration to deploy a Redis leader. The `spec` field
 defines the Pod specification which the Replication Controller will
 use to create the Redis pod. The `image` tag refers to a Docker
 image to be pulled from a registry.
 
-### Deploy the master controller
+### Deploy the leader controller
 
-Run the following command to deploy the Redis master.
+Run the following command to deploy the Redis leader.
 
 ```bash
-kubectl create -f redis-master-deployment.yaml
+kubectl create -f redis-leader-deployment.yaml
 ```
 
 ### View the running pod
 
-Verify that the Redis master Pod is running.
+Verify that the Redis leader Pod is running.
 
 ```bash
 kubectl get pods
 ```
 
-## Create redis-master service
+## Create redis-leader service
 
-You need to create a Service to proxy the traffic to the Redis master Pod. Use
+You need to create a Service to proxy the traffic to the Redis leader Pod. Use
 the following command
 to create the service.
 
 Enter the following command to view your service configuration:
 
 ```bash
-cat redis-master-service.yaml
+cat redis-leader-service.yaml
 ```
 
-This manifest file creates a Service named `redis-master` with a set of label
+This manifest file creates a Service named `redis-leader` with a set of label
 selectors. These labels match the set of labels that are deployed in the
 previous step.
 
 ```bash
-kubectl create -f redis-master-service.yaml
+kubectl create -f redis-leader-service.yaml
 ```
 
 Verify that the service is created.
@@ -147,10 +147,10 @@ kubectl get service
 
 ## Set up Redis workers
 
-Although the Redis master is a single pod, you can make it highly available and meet traffic demands by adding a few Redis worker replicas.
+Although the Redis leader is a single pod, you can make it highly available and meet traffic demands by adding a few Redis worker replicas.
 
 ```bash
-cat redis-slave-deployment.yaml
+cat redis-follower-deployment.yaml
 ```
 
 This manifest file defines two replicas for the Redis workers.
@@ -158,7 +158,7 @@ This manifest file defines two replicas for the Redis workers.
 Use the following command to start the two replicas on your container cluster.
 
 ```bash
-kubectl create -f redis-slave-deployment.yaml
+kubectl create -f redis-follower-deployment.yaml
 ```
 
 Verify that the two Redis worker replicas are running by querying the list of Pods.
@@ -167,18 +167,18 @@ Verify that the two Redis worker replicas are running by querying the list of Po
 kubectl get pods
 ```
 
-## Create redis-slave service
+## Create redis-follower service
 
 The guestbook application needs to communicate to Redis workers to read data. To make the Redis workers discoverable, you need to set up a Service. A Service provides transparent load balancing to a set of Pods.
 
 ```bash
-cat redis-slave-service.yaml
+cat redis-follower-service.yaml
 ```
 
-This file defines a Service named `redis-slave` running on port 6379. Note that the `selector` field of the Service matches the Redis worker Pods created in the previous step.
+This file defines a Service named `redis-follower` running on port 6379. Note that the `selector` field of the Service matches the Redis worker Pods created in the previous step.
 
 ```bash
-kubectl create -f redis-slave-service.yaml
+kubectl create -f redis-follower-service.yaml
 ```
 
 Verify that the Service is created:
@@ -191,7 +191,7 @@ kubectl get service
 
 Now that you have the Redis storage of your guestbook up and running, start the guestbook web servers. Like the Redis workers, this is a replicated application managed by a Deployment.
 
-This tutorial uses a simple PHP frontend. It is configured to talk to either the Redis worker or master Services, depending on whether the request is a read or a write. It exposes a simple JSON interface, and serves a jQuery-Ajax-based UX.
+This tutorial uses a simple PHP frontend. It is configured to talk to either the Redis worker or leader Services, depending on whether the request is a read or a write. It exposes a simple JSON interface, and serves a jQuery-Ajax-based UX.
 
 ```bash
 kubectl create -f frontend-deployment.yaml

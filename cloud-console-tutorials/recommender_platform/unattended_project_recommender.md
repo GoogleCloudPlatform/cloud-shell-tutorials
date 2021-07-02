@@ -6,7 +6,7 @@ This tutorial shows you how to check if a single project is unattended, as well 
 
 **Time to complete**: About 10 minutes
 
-**Prerequisites**: You need a Viewer Role, or an equivalent role for the Project / Folder / Org you will be scanning [(see required permissions)](https://cloud.google.com/recommender/docs/unattended-project-recommender#required_iam_permissions).
+**Prerequisites**: You need a Viewer Role, or an equivalent role for the Project / Folder / Organization you will be scanning [(see required permissions)](https://cloud.google.com/recommender/docs/unattended-project-recommender#required_iam_permissions).
 
 ## Outline
 
@@ -14,7 +14,7 @@ This tutorial takes you through the following steps:
 
 - Setup
 - Check for a recommendation in a single project
-- Check for recommendations for all projects in a Folder/Org
+- Check for recommendations for all projects in a Folder/Organization
 
 Click the **Start** button below to get going.
 
@@ -33,7 +33,9 @@ gcloud auth login
 
 ### Pick your operating project
 
-You will use this project to enable, and make calls to, the Recommender API.
+You will use this project to enable, and make calls to, the Recommender API, instead of enabling the API in every project you want to examine.
+
+*Hint: this should be a project where you are an Owner or otherwise have permissions to enable APIs.*
 
 <walkthrough-project-setup billing="true"></walkthrough-project-setup>
 
@@ -68,7 +70,7 @@ gcloud recommender recommendations list \
     --location=global
 ```
 
-The output most likely says `Listed 0 items.` This means that the project is not unattended. Let's try a different project next.
+If the output says `Listed 0 items.`, this means that the project is not unattended. Let's try a different project next.
 
 ### In another project
 
@@ -76,30 +78,31 @@ To check for recommendations in a different project, pick a different project an
 
 <walkthrough-project-setup></walkthrough-project-setup>
 
-What if you wanted to find all projects with a recommendation in a Folder, or even an Org? Click **Next** to see how.
+What if you wanted to find all projects with a recommendation in a Folder, or even an Organization? Click **Next** to see how.
 
-## Find projects with recommendations in a Folder or even an Org
+## Find projects with recommendations in a Folder or even an Organization
 
-You can find all Projects in a given Folder or an Org, and then recursively call the Recommender API to identify Unattended projects.
+You can find all Projects in a given Folder or an Organization, and then recursively call the Recommender API to identify Unattended projects.
 
-### Identify the Folder/Org ID you'd like to scan recursively
+### Identify the Folder/Organization ID you'd like to scan recursively
 
-To start, set the session variable `parent_id` to the numeric ID of a Folder or an Org that you want to scan. Paste the following command into your Cloud Shell and replace with the Folder or Org ID as needed. 
+To start, set the session variable `parent_id` to the numeric ID of a Folder or an Organization that you want to scan. Paste the following command into your Cloud Shell and replace with the Folder or Organization ID as needed. 
 
 The command should look something like `export parent_id=1234567890`
 
-*Hint: you can use the <walkthrough-spotlight-pointer spotlightId="purview-switcher">Project Picker</walkthrough-spotlight-pointer> in your Cloud Console to get the required Folder/Org ID.*
+*Hint: you can find the required Folder/Org ID with the <walkthrough-spotlight-pointer spotlightId="purview-switcher">Project Picker</walkthrough-spotlight-pointer> in your Cloud Console.*
 
 ```bash
 export parent_id=<REPLACE WITH FOLDER/ORG NUMERIC ID>
 ```
 
-### Find unattended projects in the selected Folder/Org
+### Find unattended projects in the selected Folder/Organization
 
-With the session variable set to your Folder/Org ID, the script below will:
-- find all projects under the Folder/Org ID you specified
-- recursively check for an unattended project recommendation in each project
+With the session variable set to your Folder/Organization ID, the script below will:
+- find all projects under the Folder/Organization ID you specified
+- iteratively check for unattended project recommendations in each project
 
+Copy this script, paste it in your Cloud Shell and hit Enter:
 
 ```none
 operating_project=$(gcloud config get-value project)
@@ -114,20 +117,20 @@ do
        subtype=$(gcloud recommender recommendations describe $recommendation_id --project=$project --billing-project=$operating_project --recommender=google.resourcemanager.projectUtilization.Recommender --location=global | sed 's/\|/ /' | awk '/recommenderSubtype:/ {print $2}')
 
       if [ -z "$subtype" ]; then : 
-      else echo "ProjectId:  $project  Recommendation: $subtype"
+      else printf "Project ID:  $project\nRecommendation: $subtype\n \n"
       fi
     fi
 done
 ```
 
-If you'd like to check a different Folder/Org, you can set `parent_id` session variable again, and simply re-run the script.
+If you'd like to check a different Folder/Organization, you can set the `parent_id` session variable to a different value, and simply re-run the script.
 
-Click **Next** to complete this tutorial.
+If your Folder or an Organization has hundreds of projects, this script may take a long time to complete. Click **Next** to learn how to export recommendations at scale and to complete the tutorial.
 
 ## Congratulations!
 
 You have successfully clicked **Next** enough times to get to the end of this tutorial.
 
-The script you ran to find unattended projects in a Folder/Org may take a long time to complete if you have hundreds of projects. In this case, you can automatically [export all recommendations from across your org to BigQuery](https://cloud.google.com/recommender/docs/bq-export/export-recommendations-to-bq) and then [use Connected Sheets to view/analyze/sort/filter](https://cloud.google.com/bigquery/docs/connected-sheets) the variety of recommendations produced.
+You can automatically [export all recommendations from across your organization to BigQuery](https://cloud.google.com/recommender/docs/bq-export/export-recommendations-to-bq) and then [use Connected Sheets to view/analyze/sort/filter/visualize](https://cloud.google.com/bigquery/docs/connected-sheets) all recommendations for your organization.
 
 <walkthrough-conclusion-trophy></walkthrough-conclusion-trophy>

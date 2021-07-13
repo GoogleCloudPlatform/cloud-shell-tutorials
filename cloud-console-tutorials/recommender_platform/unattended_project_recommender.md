@@ -35,7 +35,7 @@ gcloud auth login
 
 You will use this project to enable, and make calls to, the Recommender API, instead of enabling the API in every project you want to examine.
 
-*Hint: this should be a project where you are an Owner or otherwise have permissions to enable APIs.*
+*Hint: this should be an existing project where you are an Owner or otherwise have permissions to enable APIs.*
 
 <walkthrough-project-setup billing="true"></walkthrough-project-setup>
 
@@ -76,15 +76,17 @@ If the output says `Listed 0 items.`, this means that the project is not unatten
 
 To check for recommendations in a different project, pick a different project and re-paste the above commands (the commands update when you choose different projects):
 
+*Hint: this should be an existing project, don't create a new project*
+
 <walkthrough-project-setup></walkthrough-project-setup>
 
 What if you wanted to find all projects with a recommendation in a Folder, or even an Organization? Click **Next** to see how.
 
 ## Find projects with recommendations in a Folder or even an Organization
 
-You can find all Projects in a given Folder or an Organization, and then recursively call the Recommender API to identify Unattended projects.
+You can find all Projects in a given Folder or an Organization, and then iteratively call the Recommender API to identify Unattended projects.
 
-### Identify the Folder/Organization ID you'd like to scan recursively
+### Identify the Folder/Organization ID you'd like to scan
 
 To start, set the session variable `parent_id` to the numeric ID of a Folder or an Organization that you want to scan. Paste the following command into your Cloud Shell and replace with the Folder or Organization ID as needed. 
 
@@ -92,14 +94,14 @@ The command should look something like `export parent_id=1234567890`
 
 *Hint: you can find the required Folder/Org ID with the <walkthrough-spotlight-pointer spotlightId="purview-switcher">Project Picker</walkthrough-spotlight-pointer> in your Cloud Console.*
 
-```bash
-export parent_id=<REPLACE WITH FOLDER/ORG NUMERIC ID>
+```sh
+export parent_id=<FOLDER/ORG_ID>
 ```
 
 ### Find unattended projects in the selected Folder/Organization
 
 With the session variable set to your Folder/Organization ID, the script below will:
-- find all projects under the Folder/Organization ID you specified
+- find projects under the Folder/Organization ID you specified
 - iteratively check for unattended project recommendations in each project
 
 Copy this script, paste it in your Cloud Shell and hit Enter:
@@ -124,6 +126,8 @@ done
 ```
 
 If you'd like to check a different Folder/Organization, you can set the `parent_id` session variable to a different value, and simply re-run the script.
+
+*Note: this script is not recursive - it will help you scan Projects that are directly underneath a Folder, but will not look inside nested Folders*
 
 If your Folder or an Organization has hundreds of projects, this script may take a long time to complete. Click **Next** to learn how to export recommendations at scale and to complete the tutorial.
 

@@ -2,7 +2,7 @@
 
 The Unattended Project Recommender checks for usage activity on projects and provides recommendations that help you discover, reclaim or remove unattended projects.
 
-This tutorial shows you how to check if a single project is unattended, as well as a collection of projects in a Folder and even the entire Organization.
+This tutorial shows you how to find unattended projects in a Folder or an Org, and then how to examine usage details of identified projects.
 
 **Time to complete**: About 5 minutes
 
@@ -13,23 +13,12 @@ This tutorial shows you how to check if a single project is unattended, as well 
 This tutorial takes you through the following steps:
 
 - Setup of your environment
-- Checking for a recommendation in a single project
-- Checking for recommendations for all projects in a Folder or an Organization
+- Find unattended projects in a Folder or an Organization
+- Examine usage details of individual projects that were found
 
 To get started with this tutorial and find unattended projects, click **Start** .
 
 ## Setup
-
-### Sign in
-
-You need to authenticate to `gcloud` to be able to complete the tutorial.
-
-Paste the following command into your Cloud Shell and go through the sign in flow:
-
-```bash
-gcloud auth login
-```
-
 
 ### Pick your operating project
 
@@ -53,38 +42,9 @@ You need to enable the Recommender API in this project. You only need to do this
 
 <walkthrough-enable-apis apis="recommender.googleapis.com"></walkthrough-enable-apis> 
 
-To begin checking for unattended projects, click **Next** 
+To begin searching for unattended projects, click **Next** 
 
-## Check for unattended project recommendations
-
-### In your operating project
-
-To check whether you have an unattended project recommendation in your project, paste and run the following code into your Cloud Shell:
-
-```bash
-operating_project=$(gcloud config get-value project)
-gcloud recommender recommendations list \
-    --project={{project-id}} \
-    --billing-project=$operating_project \
-    --recommender=google.resourcemanager.projectUtilization.Recommender \
-    --location=global
-```
-
-If the output says `Listed 0 items.`, this means that the project is actively used or the project is not older than 30 days. This makes sense if you picked an existing project that you actively use. Let's try a different project next.
-
-### In another project
-
-To check for recommendations in a different project, pick a different project and re-paste the above commands (the commands update when you choose different projects):
-
-*Hint: This should be an existing project, don't create a new project*
-
-<walkthrough-project-setup></walkthrough-project-setup>
-
-What if you wanted to find all projects with a recommendation in a Folder, or even an Organization? 
-
-To find all projects with recommendations in folders or organizations, click **Next**
-
-## Find projects with recommendations in a Folder or even an Organization
+## Find unattended projects in a Folder or an Organization
 
 You can find all projects in a given Folder or an Organization, and then iteratively call the Recommender API to identify unattended projects.
 
@@ -109,29 +69,80 @@ With the session variable set to your Folder or Organization ID, the script belo
 Copy this script, paste it in your Cloud Shell and hit Enter:
 
 ```none
+output="Project-ID Recommendation Priority KgCO2e Rec-ID"
 operating_project=$(gcloud config get-value project)
-for project in $(gcloud projects list --filter="parent.id:$parent_id" --format="value(projectId)") 
-do
-    recommendation_id=$(gcloud recommender recommendations list --project=$project --billing-project=$operating_project --recommender=google.resourcemanager.projectUtilization.Recommender --verbosity error --format="value(RECOMMENDATION_ID)" --location=global )
-    
-    if [ -z "$recommendation_id" ]
+
+p=$(gcloud projects list --filter="parent.id:$parent_id" --format="value(projectId)")
+
+arr=($p)
+projects=${#arr[@]}
+current_project=0
+
+for project in ${!arr[@]}; do
+    recommendation=$(gcloud recommender recommendations list --project=${arr[project]} --billing-project=$operating_project --recommender=google.resourcemanager.projectUtilization.Recommender --verbosity error --format=json --location=global )
+
+    current_project=$((current_project + 1))
+    printf "Examined $current_project out of $projects projects"\\r
+
+    if [ -z "$recommendation" ]
     then
-       :
+      :
     else
-       subtype=$(gcloud recommender recommendations describe $recommendation_id --project=$project --billing-project=$operating_project --recommender=google.resourcemanager.projectUtilization.Recommender --location=global | sed 's/\|/ /' | awk '/recommenderSubtype:/ {print $2}')
+      subtype=$( jq -r .[].recommenderSubtype  <<< "${recommendation}" )
+      priority=$( jq -r .[].priority  <<< "${recommendation}" )
+      rec_id=$( jq -r .[].name  <<< "${recommendation}" )
+      carbon=$( jq -r .[].additionalImpact[0].sustainabilityProjection.kgCO2e  <<< "${recommendation}" )
+      
+      if [ "$carbon" == null ]; then carbon="N/A" ; fi
 
       if [ -z "$subtype" ]; then : 
-      else printf "Project ID:  $project\nRecommendation: $subtype\n \n"
+      else 
+        output="$output\n${arr[project]} $subtype $priority $carbon ${rec_id: -36}\n"
       fi
-    fi
+    fi   
 done
+echo -e $output | column -t
 ```
 
-If you'd like to check a different Folder or Organization, you can set the `parent_id` session variable to a different value, and simply re-run the script.
+If you'd like to check a different Folder or Organization, you can set the `parent_id` session variable to a different value, and simply re-paste the script.
 
 *Note: This script is not recursive - it will help you scan projects that are directly underneath a Folder, but will not look inside nested Folders*
 
-If your Folder or an Organization has hundreds of projects, this script may take a long time to complete. 
+*Note: If your Folder or an Organization has hundreds of projects, this script may take a long time to complete.*
+
+To examine the usage details of unattended projects that were found, click **Next**
+
+## Examine usage details of individual projects that were found
+
+Now that you've identified some unattended projects, you can examine individual project's usage details.
+
+### Select a project
+
+To begin, use the project selector below to pick a project that was identified as unattended in your Folder/Organization scan.
+
+*Hint: This should be an existing project, don't create a new project*
+
+<walkthrough-project-setup></walkthrough-project-setup>
+
+The project you selected is **{{project-id}}**. If this is blank, make sure you selected a project using the drop-down box above.
+
+### Examine the usage details of the project you selected
+
+With a project selected, you can copy/paste the following command to see usage details for the project.
+
+```bash
+operating_project=$(gcloud config get-value project)
+gcloud recommender insights list \
+    --project={{project-id}} \
+    --billing-project=$operating_project \
+    --insight-type=google.resourcemanager.projectUtilization.Insight \
+    --location=global \
+    --format=yaml
+```
+
+### In another project
+
+To check usage details of a different project, pick a different project and re-paste the above commands (the commands update when you choose different projects).
 
 To complete this tutorial and learn how to export recommendations at scale, click **Next**
 

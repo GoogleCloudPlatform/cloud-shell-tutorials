@@ -102,6 +102,7 @@ for project in ${!arr[@]}; do
     fi   
 done
 echo -e $output | column -t
+
 ```
 
 If you'd like to check a different Folder or Organization, you can set the `parent_id` session variable to a different value, and simply re-paste the script.

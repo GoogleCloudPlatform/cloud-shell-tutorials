@@ -116,13 +116,13 @@ To list projects with a parent type that is not an organization, run:
 gcloud projects list --format=json --filter="NOT parent.type:organization"
 ```
 
-To list projects created after a specific date (while making the comparison with a nifty projection), run:
+To list projects created after a specific date, run:
 
 ```bash
-gcloud projects list --format=json --filter="createTime.date('%d-%m-%Y')>1-1-2017"
+gcloud projects list --format=json --filter="createTime>2020-3-25"
 ```
 
-For a more extensive list of available filter operations, run `gcloud topic filters --help`.
+For a more extensive list of available filter operations, run `gcloud topic filters`.
 
 You’re all done!
 

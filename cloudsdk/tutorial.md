@@ -89,7 +89,7 @@ To return the last URL path component, use basename():
 gcloud compute zones list --format="table[box,title=Zones](id:label=zone_id, selfLink.basename())"
 ```
 
-To align column content to the center, sort primarily by name (and secondarily by zone) and give the zone column an appropriate label, run:
+To align column content to the center, sort primarily by name (and secondarily by region) and give the region column an appropriate label, run:
 ```bash
 gcloud compute zones list --format="table[box,title=Zones](name:sort=1:align=center, region.basename():label=region:sort=2, status)"
 ```

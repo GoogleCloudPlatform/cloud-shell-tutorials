@@ -49,6 +49,8 @@ To display the list of your projects as a formatted box with a title and columns
 gcloud projects list --format="table[box,title=Projects](name, lifecycleState)"
 ```
 
+**Note**: Run `gcloud config set accessibility/screen_reader false` if the results are rendered as a flattened list of items.
+
 To print a csv instead, with no heading and a specific separator, run:
 ```bash
 gcloud projects list --format="csv[no-heading,separator=' '](name, lifecycleState)"

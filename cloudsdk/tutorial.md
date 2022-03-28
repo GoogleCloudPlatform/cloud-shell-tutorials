@@ -20,7 +20,7 @@ gcloud projects create <ENTER-PROJECT-ID>
 
 **Tip**: Use `--help` with any gcloud command to bring up its documentation.
 
-Click the **Continue** button to move to the next step.
+Click the **Start** button to move to the next step.
 
 ## What can the format flag do?
 
@@ -48,6 +48,8 @@ To display the list of your projects as a formatted box with a title and columns
 ```bash
 gcloud projects list --format="table[box,title=Projects](name, lifecycleState)"
 ```
+
+**Note**: Run `gcloud config set accessibility/screen_reader false` if the results are rendered as a flattened list of items.
 
 To print a csv instead, with no heading and a specific separator, run:
 ```bash
@@ -89,7 +91,7 @@ To return the last URL path component, use basename():
 gcloud compute zones list --format="table[box,title=Zones](id:label=zone_id, selfLink.basename())"
 ```
 
-To align column content to the center, sort primarily by name (and secondarily by zone) and give the zone column an appropriate label, run:
+To align column content to the center, sort primarily by name (and secondarily by region) and give the region column an appropriate label, run:
 ```bash
 gcloud compute zones list --format="table[box,title=Zones](name:sort=1:align=center, region.basename():label=region:sort=2, status)"
 ```
@@ -116,13 +118,13 @@ To list projects with a parent type that is not an organization, run:
 gcloud projects list --format=json --filter="NOT parent.type:organization"
 ```
 
-To list projects created after a specific date (while making the comparison with a nifty projection), run:
+To list projects created after a specific date, run:
 
 ```bash
-gcloud projects list --format=json --filter="createTime.date('%d-%m-%Y')>1-1-2017"
+gcloud projects list --format=json --filter="createTime>2020-3-25"
 ```
 
-For a more extensive list of available filter operations, run `gcloud topic filters --help`.
+For a more extensive list of available filter operations, run `gcloud topic filters`.
 
 You’re all done!
 

@@ -109,11 +109,11 @@ In the Markdown for your tutorial, you may include special directives that are s
 
 
 ### Trigger file actions in the text editor
-To include a link to <walkthrough-editor-open-file filePath="cloud-shell-tutorials/tutorial.md">open a file for editing</walkthrough-editor-open-file>, use:
+To include a link to <walkthrough-editor-open-file filePath="cloudshell_open/cloud-shell-tutorials/tutorial.md">open a file for editing</walkthrough-editor-open-file>, use:
 
 ```
 <walkthrough-editor-open-file
-    filePath="cloud-shell-tutorials/tutorial.md">
+    filePath="cloudshell_open/cloud-shell-tutorials/tutorial.md">
     open a file for editing
 </walkthrough-editor-open-file>
 ```
